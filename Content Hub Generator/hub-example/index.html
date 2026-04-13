@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Marketing Strategy Hub | ContentPro</title>
+<meta name="description" content="The complete content marketing strategy resource hub — guides, articles, FAQs, and expert insights for marketing managers and content teams.">
+<meta property="og:title" content="Content Marketing Strategy Hub | ContentPro">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://example.com/content-marketing">
+
+<!-- WebSite Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ContentPro",
+  "url": "https://example.com",
+  "description": "The complete content marketing strategy resource hub",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://example.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://example.com" },
+    { "@type": "ListItem", "position": 2, "name": "Content Marketing Strategy Hub", "item": "https://example.com/content-marketing" }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --brand: #4f46e5; --brand-light: #eef2ff; --brand-dark: #3730a3;
+    --accent: #06b6d4; --accent-light: #ecfeff;
+    --success: #10b981; --warn: #f59e0b;
+    --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb;
+    --gray-400: #9ca3af; --gray-500: #6b7280; --gray-600: #4b5563;
+    --gray-700: #374151; --gray-800: #1f2937; --gray-900: #111827;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--gray-50); color: var(--gray-800); line-height: 1.6; }
+
+  /* Header */
+  .site-header { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e40af 100%); color: white; padding: 0 2rem; }
+  .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { font-weight: 800; font-size: 1.15rem; color: white; text-decoration: none; display: flex; align-items: center; gap: .5rem; }
+  .logo-dot { width: 24px; height: 24px; background: linear-gradient(135deg, #818cf8, #06b6d4); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .8rem; }
+  .header-nav { display: flex; gap: 1.5rem; }
+  .header-nav a { color: rgba(255,255,255,.8); text-decoration: none; font-size: .85rem; font-weight: 500; }
+  .header-nav a:hover { color: white; }
+  .header-cta { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); color: white; padding: .4rem 1rem; border-radius: 6px; text-decoration: none; font-size: .82rem; font-weight: 600; transition: background .15s; }
+  .header-cta:hover { background: rgba(255,255,255,.25); color: white; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e40af 100%); color: white; padding: 5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  .hero-inner { max-width: 700px; margin: 0 auto; position: relative; }
+  .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); padding: .4rem 1rem; border-radius: 999px; font-size: .75rem; font-weight: 600; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; letter-spacing: -.03em; }
+  .hero h1 span { background: linear-gradient(135deg, #a5b4fc, #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero p { font-size: 1.1rem; opacity: .85; max-width: 540px; margin: 0 auto 2rem; line-height: 1.6; }
+  .hero-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+  .btn-hero-primary { background: white; color: var(--brand); padding: .85rem 2rem; border-radius: 10px; font-weight: 700; font-size: .95rem; text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; box-shadow: 0 8px 24px rgba(0,0,0,.2); transition: transform .2s; }
+  .btn-hero-primary:hover { transform: translateY(-2px); }
+  .btn-hero-secondary { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); color: white; padding: .85rem 2rem; border-radius: 10px; font-weight: 600; font-size: .95rem; text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; transition: background .15s; }
+  .btn-hero-secondary:hover { background: rgba(255,255,255,.2); }
+
+  /* Stats */
+  .stats-band { background: white; border-bottom: 1px solid var(--gray-100); padding: 1.5rem 2rem; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 1.6rem; font-weight: 800; color: var(--brand); line-height: 1; }
+  .stat-label { font-size: .72rem; color: var(--gray-400); margin-top: .2rem; text-transform: uppercase; letter-spacing: .05em; }
+
+  /* Main */
+  .content { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.25rem; }
+  .section-header h2 { font-size: 1.3rem; font-weight: 700; color: var(--gray-900); }
+  .section-header a { font-size: .8rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+
+  /* Pillar feature card */
+  .pillar-feature { background: linear-gradient(135deg, #eef2ff, #ecfeff); border: 1px solid #c7d2fe; border-radius: 16px; padding: 2rem; margin-bottom: 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+  @media (max-width: 640px) { .pillar-feature { grid-template-columns: 1fr; } }
+  .pf-badge { display: inline-flex; align-items: center; gap: .4rem; background: var(--brand); color: white; padding: .3rem .8rem; border-radius: 999px; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .75rem; }
+  .pillar-feature h3 { font-size: 1.4rem; font-weight: 700; color: var(--gray-900); margin-bottom: .6rem; }
+  .pillar-feature p { font-size: .9rem; color: var(--gray-600); line-height: 1.6; margin-bottom: 1rem; }
+  .pf-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+  .pf-tag { background: white; border: 1px solid #c7d2fe; color: var(--brand); padding: .25rem .65rem; border-radius: 6px; font-size: .7rem; font-weight: 600; }
+  .pf-actions { display: flex; flex-direction: column; gap: .6rem; min-width: 160px; }
+  .pf-btn { display: block; text-align: center; padding: .75rem 1.25rem; border-radius: 10px; font-weight: 700; font-size: .875rem; text-decoration: none; transition: all .2s; }
+  .pf-btn-primary { background: var(--brand); color: white; box-shadow: 0 4px 12px rgba(79,70,229,.3); }
+  .pf-btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); }
+  .pf-btn-secondary { background: white; color: var(--brand); border: 1px solid #c7d2fe; }
+  .pf-btn-secondary:hover { background: var(--brand-light); }
+
+  /* Content grid */
+  .content-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .content-card { background: white; border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; transition: all .2s; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .content-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.1); transform: translateY(-3px); }
+  .cc-top { height: 6px; }
+  .cc-top-cluster { background: linear-gradient(90deg, var(--brand), #6366f1); }
+  .cc-top-faq { background: linear-gradient(90deg, var(--accent), #06b6d4); }
+  .cc-body { padding: 1.25rem; }
+  .cc-type-badge { display: inline-flex; align-items: center; gap: .3rem; padding: .25rem .65rem; border-radius: 999px; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+  .cc-badge-cluster { background: var(--brand-light); color: var(--brand); }
+  .cc-badge-faq { background: var(--accent-light); color: #0891b2; }
+  .content-card h3 { font-size: .95rem; font-weight: 700; color: var(--gray-900); line-height: 1.3; margin-bottom: .5rem; }
+  .content-card p { font-size: .8rem; color: var(--gray-500); line-height: 1.5; margin-bottom: 1rem; }
+  .cc-footer { display: flex; align-items: center; justify-content: space-between; padding-top: .75rem; border-top: 1px solid var(--gray-100); }
+  .cc-read-time { font-size: .72rem; color: var(--gray-400); display: flex; align-items: center; gap: .3rem; }
+  .cc-link { font-size: .78rem; color: var(--brand); text-decoration: none; font-weight: 600; }
+  .cc-link:hover { text-decoration: underline; }
+
+  /* GEO section */
+  .geo-section { background: linear-gradient(135deg, #0f172a, #1e1b4b); color: white; border-radius: 16px; padding: 2.5rem; margin-bottom: 2.5rem; }
+  .geo-section h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: .6rem; }
+  .geo-section > p { font-size: .9rem; opacity: .75; margin-bottom: 2rem; }
+  .geo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .geo-item { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 10px; padding: 1rem 1.1rem; }
+  .geo-item-icon { font-size: 1.3rem; margin-bottom: .5rem; }
+  .geo-item-title { font-size: .85rem; font-weight: 700; margin-bottom: .3rem; }
+  .geo-item-desc { font-size: .75rem; opacity: .65; line-height: 1.4; }
+  .geo-item-check { font-size: .65rem; color: #6ee7b7; font-weight: 700; margin-top: .4rem; }
+
+  /* Hub map */
+  .hub-map { background: white; border: 1px solid var(--gray-200); border-radius: 14px; padding: 2rem; margin-bottom: 2.5rem; }
+  .hub-map h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--gray-900); }
+  .map-pillar { background: linear-gradient(135deg, #1e1b4b, #4f46e5); color: white; border-radius: 10px; padding: .9rem 1.25rem; text-align: center; max-width: 320px; margin: 0 auto 1.25rem; }
+  .map-pillar-label { font-size: .6rem; text-transform: uppercase; letter-spacing: .1em; opacity: .6; margin-bottom: .2rem; }
+  .map-pillar-title { font-size: .9rem; font-weight: 700; }
+  .map-connector { text-align: center; color: var(--gray-300); font-size: 1.2rem; margin-bottom: .5rem; }
+  .map-cluster-row { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
+  .map-node { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; padding: .5rem .75rem; font-size: .72rem; font-weight: 600; color: var(--gray-700); text-align: center; transition: all .2s; text-decoration: none; display: block; }
+  .map-node:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-light); }
+  .map-node.faq { border-color: #bae6fd; color: #0284c7; background: #f0f9ff; }
+  .map-node.faq:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  /* CTA banner */
+  .cta-banner { background: linear-gradient(135deg, var(--brand), #6366f1); color: white; border-radius: 16px; padding: 2.5rem; text-align: center; margin-bottom: 2rem; }
+  .cta-banner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: .6rem; }
+  .cta-banner p { font-size: .95rem; opacity: .85; max-width: 480px; margin: 0 auto 1.5rem; }
+  .cta-btn { background: white; color: var(--brand); text-decoration: none; padding: .85rem 2rem; border-radius: 10px; font-weight: 700; font-size: .95rem; display: inline-block; box-shadow: 0 4px 14px rgba(0,0,0,.2); }
+
+  footer { background: var(--gray-900); color: var(--gray-400); padding: 2.5rem 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
+  .footer-brand { font-size: 1rem; font-weight: 700; color: white; margin-bottom: .5rem; }
+  .footer-copy { font-size: .78rem; }
+  .footer-col h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--gray-500); font-weight: 700; margin-bottom: .75rem; }
+  .footer-col a { display: block; font-size: .8rem; color: var(--gray-400); text-decoration: none; margin-bottom: .35rem; }
+  .footer-col a:hover { color: white; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-dot">🌐</div>
+      ContentPro
+    </a>
+    <nav class="header-nav">
+      <a href="#">Strategy</a>
+      <a href="#">SEO</a>
+      <a href="#">GEO</a>
+      <a href="#">Resources</a>
+    </nav>
+    <a href="../content-hub-generator.html" class="header-cta">⚡ Open Generator</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🌐 Content Hub · SEO + GEO Optimized</div>
+    <h1>Master <span>Content Marketing</span> Strategy</h1>
+    <p>The complete resource hub for marketing managers and content teams — covering strategy, SEO, GEO optimization, and everything in between.</p>
+    <div class="hero-actions">
+      <a href="pillar-page.html" class="btn-hero-primary">🏛️ Read the Full Guide</a>
+      <a href="faq-content-marketing.html" class="btn-hero-secondary">❓ Browse FAQs</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats band -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">In-Depth Articles</div></div>
+    <div class="stat"><div class="stat-num">12</div><div class="stat-label">FAQs Answered</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Schema Types</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">GEO Optimizations</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- Pillar Feature -->
+  <div class="section-header">
+    <h2>Start Here</h2>
+  </div>
+  <div class="pillar-feature">
+    <div>
+      <div class="pf-badge">🏛️ Pillar Page</div>
+      <h3>The Complete Guide to Content Marketing Strategy</h3>
+      <p>Everything marketing managers and content teams need to know — from building topic clusters to GEO optimization. This comprehensive pillar page links to all supporting cluster articles.</p>
+      <div class="pf-tags">
+        <span class="pf-tag">Article Schema</span>
+        <span class="pf-tag">BreadcrumbList</span>
+        <span class="pf-tag">Answer-First</span>
+        <span class="pf-tag">Definition Blocks</span>
+        <span class="pf-tag">Internal Linking</span>
+      </div>
+    </div>
+    <div class="pf-actions">
+      <a href="pillar-page.html" class="pf-btn pf-btn-primary">Read Full Guide →</a>
+      <a href="faq-content-marketing.html" class="pf-btn pf-btn-secondary">View FAQs →</a>
+    </div>
+  </div>
+
+  <!-- Cluster Articles -->
+  <div class="section-header">
+    <h2>Cluster Articles</h2>
+    <a href="pillar-page.html">View all in guide →</a>
+  </div>
+  <div class="content-grid">
+    <div class="content-card">
+      <div class="cc-top cc-top-cluster"></div>
+      <div class="cc-body">
+        <div class="cc-type-badge cc-badge-cluster">📄 Cluster Article</div>
+        <h3>Keyword Research & Intent Mapping</h3>
+        <p>How to find, prioritize, and map keywords to content topics — covering search intent, long-tail strategy, and competitive gap analysis.</p>
+        <div class="cc-footer">
+          <span class="cc-read-time">⏱️ 8 min read</span>
+          <a href="article-keyword-research.html" class="cc-link">Read article →</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="cc-top cc-top-cluster"></div>
+      <div class="cc-body">
+        <div class="cc-type-badge cc-badge-cluster">📄 Cluster Article</div>
+        <h3>Content Creation at Scale</h3>
+        <p>Systems, workflows, and frameworks for producing high-quality content consistently — covering briefs, templates, and team processes.</p>
+        <div class="cc-footer">
+          <span class="cc-read-time">⏱️ 10 min read</span>
+          <a href="article-content-creation.html" class="cc-link">Read article →</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="cc-top cc-top-cluster"></div>
+      <div class="cc-body">
+        <div class="cc-type-badge cc-badge-cluster">📄 Cluster Article</div>
+        <h3>On-Page SEO Best Practices</h3>
+        <p>A comprehensive checklist for optimizing every page — title tags, meta descriptions, header structure, schema markup, and internal linking.</p>
+        <div class="cc-footer">
+          <span class="cc-read-time">⏱️ 9 min read</span>
+          <a href="article-seo-optimization.html" class="cc-link">Read article →</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="cc-top cc-top-cluster"></div>
+      <div class="cc-body">
+        <div class="cc-type-badge cc-badge-cluster">📄 Cluster Article</div>
+        <h3>Content Distribution Strategy</h3>
+        <p>How to amplify your content across channels — email, social, syndication, and paid promotion — to maximize organic reach and engagement.</p>
+        <div class="cc-footer">
+          <span class="cc-read-time">⏱️ 7 min read</span>
+          <a href="article-content-distribution.html" class="cc-link">Read article →</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="cc-top cc-top-cluster"></div>
+      <div class="cc-body">
+        <div class="cc-type-badge cc-badge-cluster">📄 Cluster Article</div>
+        <h3>Content Analytics & Measurement</h3>
+        <p>Which metrics actually matter, how to attribute revenue to content, and how to build a reporting dashboard your stakeholders will understand.</p>
+        <div class="cc-footer">
+          <span class="cc-read-time">⏱️ 8 min read</span>
+          <a href="article-content-analytics.html" class="cc-link">Read article →</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="cc-top cc-top-faq"></div>
+      <div class="cc-body">
+        <div class="cc-type-badge cc-badge-faq">❓ FAQ Page</div>
+        <h3>Content Marketing FAQs</h3>
+        <p>The 12 most common questions about content marketing strategy — answered clearly, with FAQPage schema for rich snippets and AI citation.</p>
+        <div class="cc-footer">
+          <span class="cc-read-time">⏱️ 5 min read</span>
+          <a href="faq-content-marketing.html" class="cc-link">Read FAQs →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hub Architecture Map -->
+  <div class="hub-map">
+    <h2>🗂️ Hub Architecture</h2>
+    <div class="map-pillar">
+      <div class="map-pillar-label">🏛️ Pillar Page</div>
+      <div class="map-pillar-title">Content Marketing Strategy</div>
+    </div>
+    <div class="map-connector">↕</div>
+    <div class="map-cluster-row">
+      <a href="article-keyword-research.html" class="map-node">Keyword Research</a>
+      <a href="article-content-creation.html" class="map-node">Content Creation</a>
+      <a href="article-seo-optimization.html" class="map-node">On-Page SEO</a>
+      <a href="article-content-distribution.html" class="map-node">Distribution</a>
+      <a href="article-content-analytics.html" class="map-node">Analytics</a>
+      <a href="faq-content-marketing.html" class="map-node faq">FAQs ❓</a>
+    </div>
+  </div>
+
+  <!-- GEO Section -->
+  <div class="geo-section">
+    <h2>🤖 GEO Optimizations Active</h2>
+    <p>This hub is built to be cited by AI search engines — not just ranked by Google.</p>
+    <div class="geo-grid">
+      <div class="geo-item">
+        <div class="geo-item-icon">📌</div>
+        <div class="geo-item-title">Answer-First Blocks</div>
+        <div class="geo-item-desc">Direct answers at the top of each page for AI citation</div>
+        <div class="geo-item-check">✓ Active on all pages</div>
+      </div>
+      <div class="geo-item">
+        <div class="geo-item-icon">📖</div>
+        <div class="geo-item-title">Definition Sections</div>
+        <div class="geo-item-desc">Clear "What is X?" definitions that AI assistants summarize</div>
+        <div class="geo-item-check">✓ Active on all pages</div>
+      </div>
+      <div class="geo-item">
+        <div class="geo-item-icon">❓</div>
+        <div class="geo-item-title">FAQPage Schema</div>
+        <div class="geo-item-desc">Structured Q&A pairs with JSON-LD for rich results</div>
+        <div class="geo-item-check">✓ Active on FAQ pages</div>
+      </div>
+      <div class="geo-item">
+        <div class="geo-item-icon">🏷️</div>
+        <div class="geo-item-title">Article Schema</div>
+        <div class="geo-item-desc">Machine-readable content signals on all article pages</div>
+        <div class="geo-item-check">✓ Active on all pages</div>
+      </div>
+      <div class="geo-item">
+        <div class="geo-item-icon">🔗</div>
+        <div class="geo-item-title">Internal Linking</div>
+        <div class="geo-item-desc">Topical authority via cluster-to-pillar link structure</div>
+        <div class="geo-item-check">✓ Active throughout hub</div>
+      </div>
+      <div class="geo-item">
+        <div class="geo-item-icon">📍</div>
+        <div class="geo-item-title">BreadcrumbList</div>
+        <div class="geo-item-desc">Hierarchical navigation schema on every page</div>
+        <div class="geo-item-check">✓ Active on all pages</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA banner -->
+  <div class="cta-banner">
+    <h2>Build Your Own Content Hub</h2>
+    <p>Use the Content Hub Generator to create a complete, SEO & GEO-optimized hub like this one — for any topic, any industry.</p>
+    <a href="../content-hub-generator.html" class="cta-btn">⚡ Open the Generator</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">ContentPro</div>
+      <div class="footer-copy">© 2026 ContentPro · Built with Content Hub Generator</div>
+    </div>
+    <div class="footer-col">
+      <h4>Hub Pages</h4>
+      <a href="pillar-page.html">Strategy Guide</a>
+      <a href="article-keyword-research.html">Keyword Research</a>
+      <a href="article-seo-optimization.html">On-Page SEO</a>
+      <a href="article-content-distribution.html">Distribution</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="faq-content-marketing.html">FAQs</a>
+      <a href="../content-hub-generator.html">Hub Generator</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

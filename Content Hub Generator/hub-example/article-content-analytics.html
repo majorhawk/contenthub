@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Analytics & Measurement: Metrics That Actually Matter | ContentPro</title>
+<meta name="description" content="Which content metrics actually matter, how to attribute revenue to your content hub, and how to build a reporting dashboard your stakeholders will understand.">
+<meta name="keywords" content="content analytics, content marketing metrics, content ROI, how to measure content marketing, content performance dashboard">
+<link rel="canonical" href="https://example.com/content-marketing/content-analytics">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Content Analytics & Measurement: Metrics That Actually Matter","author":{"@type":"Organization","name":"ContentPro"},"publisher":{"@type":"Organization","name":"ContentPro"},"datePublished":"2026-04-13"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://example.com"},{"@type":"ListItem","position":2,"name":"Content Marketing Strategy","item":"https://example.com/content-marketing-strategy"},{"@type":"ListItem","position":3,"name":"Content Analytics & Measurement","item":"https://example.com/content-marketing/content-analytics"}]}</script>
+<style>
+  :root{--brand:#4f46e5;--brand-light:#eef2ff;--brand-dark:#3730a3;--accent:#06b6d4;--accent-light:#ecfeff;--success:#10b981;--warn:#f59e0b;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-500:#6b7280;--gray-600:#4b5563;--gray-700:#374151;--gray-800:#1f2937;--gray-900:#111827}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.7}
+  .site-header{background:linear-gradient(135deg,#1e1b4b,#312e81,#1e40af);color:white;padding:0 2rem}
+  .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-weight:800;font-size:1.1rem;color:white;text-decoration:none}
+  .header-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;font-weight:500;margin-left:1.5rem}
+  .breadcrumb{background:white;border-bottom:1px solid var(--gray-100);padding:.65rem 2rem}
+  .bc{max-width:1100px;margin:0 auto;font-size:.75rem;color:var(--gray-400);display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+  .bc a{color:var(--brand);text-decoration:none}
+  .page-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;display:grid;grid-template-columns:1fr 260px;gap:2.5rem}
+  @media(max-width:768px){.page-wrap{grid-template-columns:1fr}.sidebar{display:none}}
+  .hero{background:linear-gradient(135deg,#fef9c3,#ecfeff);border-radius:14px;padding:2.25rem;margin-bottom:2rem;border-left:5px solid var(--warn)}
+  .page-badge{display:inline-flex;align-items:center;gap:.4rem;background:#dcfce7;color:#15803d;padding:.3rem .8rem;border-radius:999px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+  h1{font-size:2rem;font-weight:800;line-height:1.2;color:var(--gray-900);margin-bottom:1rem}
+  .hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap}
+  .hero-meta span{font-size:.78rem;color:var(--gray-500)}
+  .pillar-link{display:inline-flex;align-items:center;gap:.4rem;background:var(--brand-light);color:var(--brand);padding:.3rem .75rem;border-radius:6px;font-size:.75rem;font-weight:600;text-decoration:none}
+  article{font-size:.95rem}
+  article h2{font-size:1.4rem;font-weight:700;color:var(--gray-900);margin:2.5rem 0 .75rem;padding-top:1.5rem;border-top:1px solid var(--gray-200)}
+  article h3{font-size:1.05rem;font-weight:600;color:var(--gray-800);margin:1.5rem 0 .5rem}
+  article p{margin-bottom:1.2rem;color:var(--gray-700)}
+  article ul{padding-left:1.5rem;margin-bottom:1.25rem;color:var(--gray-700)}
+  article li{margin-bottom:.5rem}
+  article a{color:var(--brand);text-decoration:none;font-weight:500}
+  article a:hover{text-decoration:underline}
+  .answer-block{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:2rem}
+  .answer-block .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:#15803d;font-weight:700;margin-bottom:.5rem}
+  .answer-block p{color:#14532d;margin:0}
+  .toc{background:white;border:1px solid var(--gray-200);border-radius:10px;padding:1.25rem;margin-bottom:2rem}
+  .toc h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);font-weight:700;margin-bottom:.75rem}
+  .toc ol{padding-left:1.25rem}
+  .toc li{margin-bottom:.35rem}
+  .toc a{font-size:.85rem;color:var(--brand);text-decoration:none}
+  .definition-block{background:white;border:1px solid var(--gray-200);border-radius:10px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+  .definition-block .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--brand);font-weight:700;margin-bottom:.5rem}
+  .definition-block p{margin:0}
+  .callout{background:var(--brand-light);border-left:4px solid var(--brand);border-radius:0 10px 10px 0;padding:1rem 1.25rem;margin:1.5rem 0}
+  .callout p{margin:0;font-size:.875rem;color:var(--brand-dark)}
+  .metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin:1.25rem 0}
+  .metric-card{background:white;border:1px solid var(--gray-200);border-radius:12px;padding:1rem;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .metric-tier{font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:.4rem}
+  .tier-primary{color:var(--success)}
+  .tier-secondary{color:var(--warn)}
+  .tier-vanity{color:var(--gray-400)}
+  .metric-name{font-size:.88rem;font-weight:700;color:var(--gray-900);margin-bottom:.25rem}
+  .metric-why{font-size:.74rem;color:var(--gray-500);line-height:1.4}
+  .report-template{background:#0f172a;border-radius:10px;padding:1.25rem;font-size:.78rem;color:#94a3b8;margin:1.25rem 0;line-height:1.6}
+  .rt-section{color:#7dd3fc;font-weight:700;margin-top:.6rem}
+  .rt-item{color:#86efac;padding-left:1rem}
+  .rt-note{color:#475569;font-style:italic}
+  .back-to-pillar{background:linear-gradient(135deg,#eef2ff,#ecfeff);border:1px solid #c7d2fe;border-radius:12px;padding:1.25rem 1.5rem;margin:2.5rem 0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .back-to-pillar p{font-size:.875rem;color:var(--gray-600)}
+  .back-btn{background:var(--brand);color:white;text-decoration:none;padding:.6rem 1.25rem;border-radius:8px;font-weight:700;font-size:.82rem;white-space:nowrap}
+  .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.6rem;margin-top:.75rem}
+  .rc{background:white;border:1px solid var(--gray-200);border-radius:10px;padding:.9rem 1rem;text-decoration:none;transition:all .2s;display:block}
+  .rc:hover{border-color:var(--brand);transform:translateY(-2px)}
+  .rc-type{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);font-weight:700;margin-bottom:.3rem}
+  .rc-title{font-size:.82rem;font-weight:600;color:var(--gray-800)}
+  .sidebar-widget{background:white;border:1px solid var(--gray-200);border-radius:10px;padding:1.25rem;margin-bottom:1rem}
+  .sidebar-widget h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);font-weight:700;margin-bottom:.75rem}
+  .sl{display:block;padding:.5rem 0;font-size:.82rem;color:var(--gray-600);text-decoration:none;border-bottom:1px solid var(--gray-100)}
+  .sl:last-child{border-bottom:none}
+  .sl:hover,.sl.active{color:var(--brand)}
+  .sl.active{font-weight:700}
+  footer{background:var(--gray-900);color:var(--gray-400);padding:2rem;text-align:center;font-size:.8rem;margin-top:3rem}
+  footer a{color:#6366f1;text-decoration:none;margin:0 .5rem}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner"><a href="index.html" class="logo">ContentPro</a><nav><a href="index.html" class="header-nav">Home</a><a href="pillar-page.html" class="header-nav">Strategy Guide</a><a href="faq-content-marketing.html" class="header-nav">FAQs</a><a href="../content-hub-generator.html" class="header-nav">Generator</a></nav></div></header>
+<div class="breadcrumb"><div class="bc"><a href="index.html">Home</a><span>›</span><a href="pillar-page.html">Content Marketing Strategy</a><span>›</span><span>Content Analytics & Measurement</span></div></div>
+<div class="page-wrap">
+<div>
+  <div class="hero">
+    <div class="page-badge">📄 Cluster Article</div>
+    <h1>Content Analytics & Measurement: Metrics That Actually Matter</h1>
+    <div class="hero-meta"><span>📅 April 2026</span><span>⏱️ 8 min read</span><a href="pillar-page.html" class="pillar-link">🏛️ Part of: Content Marketing Strategy Hub</a></div>
+  </div>
+  <div class="answer-block"><div class="lbl">📌 Quick Answer — AI Optimized</div><p><strong>Content marketing analytics</strong> is the practice of measuring whether your content is achieving its goals — traffic, leads, revenue, or AI search citation. The most important metrics are organic sessions, keyword rankings, conversion rate, and content-attributed pipeline. Vanity metrics like raw page views without context provide little actionable signal.</p></div>
+  <div class="toc"><h3>📋 Table of Contents</h3><ol><li><a href="#what-is">What is Content Analytics?</a></li><li><a href="#metrics">Primary vs. Secondary vs. Vanity Metrics</a></li><li><a href="#cluster-performance">Measuring Topic Cluster Performance</a></li><li><a href="#attribution">Revenue Attribution for Content</a></li><li><a href="#reporting">Building Your Reporting Dashboard</a></li></ol></div>
+  <article>
+    <div class="definition-block" id="what-is"><div class="lbl">📖 Definition</div><p><strong>Content analytics</strong> is the systematic collection, analysis, and interpretation of data about how your content performs — including how it's discovered, consumed, shared, and whether it leads to desired business outcomes. For a content hub, analytics helps you identify which topics and formats drive the most value so you can double down and improve underperformers.</p></div>
+
+    <h2 id="metrics">Primary vs. Secondary vs. Vanity Metrics</h2>
+    <p>Not all metrics are equal. Understanding which ones actually connect to business outcomes prevents you from optimizing for the wrong things.</p>
+    <div class="metrics-grid">
+      <div class="metric-card"><div class="metric-tier tier-primary">✅ Primary Metric</div><div class="metric-name">Organic Sessions</div><div class="metric-why">Direct measure of SEO performance and audience growth from search</div></div>
+      <div class="metric-card"><div class="metric-tier tier-primary">✅ Primary Metric</div><div class="metric-name">Keyword Rankings</div><div class="metric-why">Leading indicator of future organic traffic — track weekly for target keywords</div></div>
+      <div class="metric-card"><div class="metric-tier tier-primary">✅ Primary Metric</div><div class="metric-name">Conversion Rate</div><div class="metric-why">% of content visitors who take a desired action (sign up, download, contact)</div></div>
+      <div class="metric-card"><div class="metric-tier tier-primary">✅ Primary Metric</div><div class="metric-name">Content-Attributed Pipeline</div><div class="metric-why">Revenue or leads where content was a touchpoint in the buyer journey</div></div>
+      <div class="metric-card"><div class="metric-tier tier-secondary">⚠️ Secondary Metric</div><div class="metric-name">Time on Page</div><div class="metric-why">Signals content quality and engagement depth — important context for organic sessions</div></div>
+      <div class="metric-card"><div class="metric-tier tier-secondary">⚠️ Secondary Metric</div><div class="metric-name">Scroll Depth</div><div class="metric-why">How far readers get into long-form content — reveals where attention drops off</div></div>
+      <div class="metric-card"><div class="metric-tier tier-vanity">🚫 Vanity Metric</div><div class="metric-name">Raw Page Views</div><div class="metric-why">Meaningless without context — 10,000 unqualified views = 0 business value</div></div>
+      <div class="metric-card"><div class="metric-tier tier-vanity">🚫 Vanity Metric</div><div class="metric-name">Social Shares</div><div class="metric-why">Feels good; rarely correlates with traffic, leads, or revenue in B2B contexts</div></div>
+    </div>
+
+    <h2 id="cluster-performance">Measuring Topic Cluster Performance</h2>
+    <p>For content hubs, measure performance at the <strong>cluster level</strong>, not just individual articles. A cluster of 8 articles targeting "content marketing strategy" should be evaluated together — because that's how topical authority works.</p>
+    <ul>
+      <li><strong>Cluster organic sessions</strong> — Total sessions across all pages in the cluster</li>
+      <li><strong>Pillar page ranking</strong> — Position for the primary pillar keyword</li>
+      <li><strong>Coverage score</strong> — What % of your target keyword set are you ranking for in positions 1–20?</li>
+      <li><strong>Internal link clicks</strong> — How often visitors navigate from cluster articles back to the pillar, and vice versa</li>
+    </ul>
+    <div class="callout"><p>💡 Use Google Search Console's "Search results" report filtered by page group (URL contains "/content-marketing") to see cluster-level impressions, clicks, and CTR in one view.</p></div>
+
+    <h2 id="attribution">Revenue Attribution for Content</h2>
+    <p>Attributing revenue to content is the most difficult — and most important — analytics challenge in content marketing. Most buyers touch multiple pieces of content before converting, so single-touch attribution (first or last click) dramatically undercounts content's impact.</p>
+    <p>A practical approach for content hubs:</p>
+    <ul>
+      <li><strong>First-touch attribution</strong> — Tag leads where a content page was their first interaction with your brand</li>
+      <li><strong>Assisted conversions</strong> — Google Analytics 4's "Paths" report shows how often content was in the conversion path even without being first or last touch</li>
+      <li><strong>Survey attribution</strong> — Ask new customers "How did you first hear about us?" — content hub pages often appear here even when analytics data misses it</li>
+    </ul>
+
+    <h2 id="reporting">Building Your Reporting Dashboard</h2>
+    <p>A content hub reporting dashboard should be updated monthly and shared with stakeholders in a format that connects content activity to business outcomes — not just traffic numbers.</p>
+    <div class="report-template">
+<div class="rt-section">// Monthly Content Hub Report Structure</div>
+<div class="rt-item">1. Executive Summary (3 bullet points max)</div>
+<div class="rt-item">2. Organic Traffic: This month vs. last month vs. same month last year</div>
+<div class="rt-item">3. Keyword Rankings: # of keywords in top 3 / top 10 / top 20</div>
+<div class="rt-item">4. Top 5 Pages by Sessions (with conversion rate per page)</div>
+<div class="rt-item">5. Content-Attributed Leads / Pipeline this month</div>
+<div class="rt-item">6. Pages Published this month (with initial performance)</div>
+<div class="rt-item">7. Next Month Priorities (based on data, not intuition)</div>
+<div class="rt-note">// Keep it to one page — stakeholders want signals, not spreadsheets</div>
+    </div>
+
+    <div class="back-to-pillar"><div><p><strong>This is part of the Content Marketing Strategy Hub.</strong><br>Return to the pillar page for the full topic overview.</p></div><a href="pillar-page.html" class="back-btn">🏛️ Back to Pillar Page</a></div>
+    <h3 style="font-size:1rem;color:var(--gray-700);margin-bottom:.75rem">📚 Continue Reading</h3>
+    <div class="related-grid">
+      <a href="article-content-distribution.html" class="rc"><div class="rc-type">📄 Previous Article</div><div class="rc-title">Content Distribution Strategy</div></a>
+      <a href="article-keyword-research.html" class="rc"><div class="rc-type">📄 Cluster Article</div><div class="rc-title">Keyword Research & Intent Mapping</div></a>
+      <a href="faq-content-marketing.html" class="rc"><div class="rc-type">❓ FAQ Page</div><div class="rc-title">Content Marketing FAQs</div></a>
+    </div>
+  </article>
+</div>
+<aside class="sidebar">
+  <div class="sidebar-widget"><h3>📚 Hub Navigation</h3><a href="index.html" class="sl">🏠 Hub Overview</a><a href="pillar-page.html" class="sl">🏛️ Strategy Guide (Pillar)</a><a href="article-keyword-research.html" class="sl">📄 Keyword Research</a><a href="article-content-creation.html" class="sl">📄 Content Creation</a><a href="article-seo-optimization.html" class="sl">📄 On-Page SEO</a><a href="article-content-distribution.html" class="sl">📄 Distribution</a><a href="article-content-analytics.html" class="sl active">📄 Analytics</a><a href="faq-content-marketing.html" class="sl">❓ FAQs</a></div>
+  <div class="sidebar-widget" style="background:var(--brand-light);border-color:#c7d2fe"><h3 style="color:var(--brand)">⚡ Build Your Hub</h3><p style="font-size:.78rem;color:var(--brand-dark);margin-bottom:.75rem;line-height:1.4">Generate a complete SEO & GEO-optimized content hub for any topic.</p><a href="../content-hub-generator.html" style="display:block;background:var(--brand);color:white;text-align:center;padding:.6rem;border-radius:8px;text-decoration:none;font-size:.82rem;font-weight:700">Open Generator →</a></div>
+</aside>
+</div>
+<footer><p>© 2026 ContentPro · Built with Content Hub Generator</p><p style="margin-top:.5rem"><a href="index.html">Hub Home</a><a href="pillar-page.html">Strategy Guide</a><a href="faq-content-marketing.html">FAQs</a><a href="../content-hub-generator.html">Generator</a></p></footer>
+</body>
+</html>

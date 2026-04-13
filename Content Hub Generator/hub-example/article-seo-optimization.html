@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On-Page SEO Best Practices: The Complete Checklist | ContentPro</title>
+<meta name="description" content="The complete on-page SEO checklist — covering title tags, meta descriptions, header structure, schema markup, internal linking, and GEO optimization for every content hub page.">
+<meta name="keywords" content="on-page SEO best practices, SEO checklist, title tag optimization, schema markup SEO, internal linking strategy">
+<link rel="canonical" href="https://example.com/content-marketing/on-page-seo-best-practices">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"On-Page SEO Best Practices: The Complete Checklist","description":"The complete on-page SEO checklist for content hub pages — title tags, meta descriptions, schema markup, and internal linking.","author":{"@type":"Organization","name":"ContentPro"},"publisher":{"@type":"Organization","name":"ContentPro"},"datePublished":"2026-04-13"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://example.com"},{"@type":"ListItem","position":2,"name":"Content Marketing Strategy","item":"https://example.com/content-marketing-strategy"},{"@type":"ListItem","position":3,"name":"On-Page SEO Best Practices","item":"https://example.com/content-marketing/on-page-seo"}]}</script>
+<style>
+  :root{--brand:#4f46e5;--brand-light:#eef2ff;--brand-dark:#3730a3;--accent:#06b6d4;--accent-light:#ecfeff;--success:#10b981;--warn:#f59e0b;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-500:#6b7280;--gray-600:#4b5563;--gray-700:#374151;--gray-800:#1f2937;--gray-900:#111827}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.7}
+  .site-header{background:linear-gradient(135deg,#1e1b4b,#312e81,#1e40af);color:white;padding:0 2rem}
+  .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-weight:800;font-size:1.1rem;color:white;text-decoration:none}
+  .header-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;font-weight:500;margin-left:1.5rem}
+  .breadcrumb{background:white;border-bottom:1px solid var(--gray-100);padding:.65rem 2rem}
+  .bc{max-width:1100px;margin:0 auto;font-size:.75rem;color:var(--gray-400);display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+  .bc a{color:var(--brand);text-decoration:none}
+  .page-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;display:grid;grid-template-columns:1fr 260px;gap:2.5rem}
+  @media(max-width:768px){.page-wrap{grid-template-columns:1fr}.sidebar{display:none}}
+  .hero{background:linear-gradient(135deg,#eef2ff,#fef9c3);border-radius:14px;padding:2.25rem;margin-bottom:2rem;border-left:5px solid var(--warn)}
+  .page-badge{display:inline-flex;align-items:center;gap:.4rem;background:#dcfce7;color:#15803d;padding:.3rem .8rem;border-radius:999px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+  h1{font-size:2rem;font-weight:800;line-height:1.2;color:var(--gray-900);margin-bottom:1rem}
+  .hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap}
+  .hero-meta span{font-size:.78rem;color:var(--gray-500)}
+  .pillar-link{display:inline-flex;align-items:center;gap:.4rem;background:var(--brand-light);color:var(--brand);padding:.3rem .75rem;border-radius:6px;font-size:.75rem;font-weight:600;text-decoration:none}
+  article{font-size:.95rem}
+  article h2{font-size:1.4rem;font-weight:700;color:var(--gray-900);margin:2.5rem 0 .75rem;padding-top:1.5rem;border-top:1px solid var(--gray-200)}
+  article h3{font-size:1.05rem;font-weight:600;color:var(--gray-800);margin:1.5rem 0 .5rem}
+  article p{margin-bottom:1.2rem;color:var(--gray-700)}
+  article ul,article ol{padding-left:1.5rem;margin-bottom:1.25rem;color:var(--gray-700)}
+  article li{margin-bottom:.5rem}
+  article a{color:var(--brand);text-decoration:none;font-weight:500}
+  article a:hover{text-decoration:underline}
+  .answer-block{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:2rem}
+  .answer-block .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:#15803d;font-weight:700;margin-bottom:.5rem}
+  .answer-block p{color:#14532d;margin:0}
+  .toc{background:white;border:1px solid var(--gray-200);border-radius:10px;padding:1.25rem;margin-bottom:2rem}
+  .toc h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);font-weight:700;margin-bottom:.75rem}
+  .toc ol{padding-left:1.25rem}
+  .toc li{margin-bottom:.35rem}
+  .toc a{font-size:.85rem;color:var(--brand);text-decoration:none}
+  .definition-block{background:white;border:1px solid var(--gray-200);border-radius:10px;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .definition-block .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--brand);font-weight:700;margin-bottom:.5rem}
+  .definition-block p{margin:0}
+  .callout{background:var(--brand-light);border-left:4px solid var(--brand);border-radius:0 10px 10px 0;padding:1rem 1.25rem;margin:1.5rem 0}
+  .callout p{margin:0;font-size:.875rem;color:var(--brand-dark)}
+  /* Checklist */
+  .checklist{background:white;border:1px solid var(--gray-200);border-radius:12px;overflow:hidden;margin:1.25rem 0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .checklist-header{background:var(--gray-800);color:white;padding:.75rem 1.25rem;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:.5rem}
+  .checklist-item{display:flex;align-items:flex-start;gap:.75rem;padding:.8rem 1.25rem;border-bottom:1px solid var(--gray-100)}
+  .checklist-item:last-child{border-bottom:none}
+  .chk{width:18px;height:18px;border:2px solid var(--success);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;cursor:pointer;transition:background .15s}
+  .chk.checked{background:var(--success)}
+  .chk.checked::after{content:'✓';color:white;font-size:.7rem;font-weight:700}
+  .chk-text{font-size:.85rem;color:var(--gray-700)}
+  .chk-text strong{color:var(--gray-900);display:block;margin-bottom:.15rem}
+  .chk-text span{font-size:.75rem;color:var(--gray-400);line-height:1.4}
+  /* Schema comparison table */
+  .schema-table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.85rem;border:1px solid var(--gray-200);border-radius:10px;overflow:hidden}
+  .schema-table th{background:var(--gray-800);color:white;padding:.75rem 1rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+  .schema-table td{padding:.75rem 1rem;border-bottom:1px solid var(--gray-100);vertical-align:top}
+  .schema-table tr:last-child td{border-bottom:none}
+  .schema-table tr:hover td{background:var(--gray-50)}
+  .schema-badge{display:inline-block;padding:.2rem .6rem;border-radius:6px;font-size:.68rem;font-weight:700;background:var(--brand-light);color:var(--brand)}
+  .back-to-pillar{background:linear-gradient(135deg,#eef2ff,#ecfeff);border:1px solid #c7d2fe;border-radius:12px;padding:1.25rem 1.5rem;margin:2.5rem 0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .back-to-pillar p{font-size:.875rem;color:var(--gray-600)}
+  .back-btn{background:var(--brand);color:white;text-decoration:none;padding:.6rem 1.25rem;border-radius:8px;font-weight:700;font-size:.82rem;white-space:nowrap}
+  .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.6rem;margin-top:.75rem}
+  .rc{background:white;border:1px solid var(--gray-200);border-radius:10px;padding:.9rem 1rem;text-decoration:none;transition:all .2s;display:block}
+  .rc:hover{border-color:var(--brand);transform:translateY(-2px)}
+  .rc-type{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);font-weight:700;margin-bottom:.3rem}
+  .rc-title{font-size:.82rem;font-weight:600;color:var(--gray-800)}
+  .sidebar-widget{background:white;border:1px solid var(--gray-200);border-radius:10px;padding:1.25rem;margin-bottom:1rem}
+  .sidebar-widget h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);font-weight:700;margin-bottom:.75rem}
+  .sl{display:block;padding:.5rem 0;font-size:.82rem;color:var(--gray-600);text-decoration:none;border-bottom:1px solid var(--gray-100)}
+  .sl:last-child{border-bottom:none}
+  .sl:hover,.sl.active{color:var(--brand)}
+  .sl.active{font-weight:700}
+  footer{background:var(--gray-900);color:var(--gray-400);padding:2rem;text-align:center;font-size:.8rem;margin-top:3rem}
+  footer a{color:#6366f1;text-decoration:none;margin:0 .5rem}
+  /* Score meter */
+  .score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1.25rem 0}
+  .score-box{background:white;border:1px solid var(--gray-200);border-radius:10px;padding:.9rem;text-align:center}
+  .score-num{font-size:1.6rem;font-weight:800;line-height:1}
+  .score-lbl{font-size:.68rem;color:var(--gray-400);margin-top:.2rem;text-transform:uppercase;letter-spacing:.05em}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner"><a href="index.html" class="logo">ContentPro</a><nav><a href="index.html" class="header-nav">Home</a><a href="pillar-page.html" class="header-nav">Strategy Guide</a><a href="faq-content-marketing.html" class="header-nav">FAQs</a><a href="../content-hub-generator.html" class="header-nav">Generator</a></nav></div></header>
+<div class="breadcrumb"><div class="bc"><a href="index.html">Home</a><span>›</span><a href="pillar-page.html">Content Marketing Strategy</a><span>›</span><span>On-Page SEO Best Practices</span></div></div>
+<div class="page-wrap">
+<div>
+  <div class="hero">
+    <div class="page-badge">📄 Cluster Article</div>
+    <h1>On-Page SEO Best Practices: The Complete Checklist</h1>
+    <div class="hero-meta"><span>📅 April 2026</span><span>⏱️ 9 min read</span><a href="pillar-page.html" class="pillar-link">🏛️ Part of: Content Marketing Strategy Hub</a></div>
+  </div>
+  <div class="answer-block"><div class="lbl">📌 Quick Answer — AI Optimized</div><p><strong>On-page SEO</strong> is the practice of optimizing individual web pages to rank higher in search engines and attract more relevant traffic. For content hubs, this means correctly placing keywords in titles, headers, and body text; adding schema markup; building a strong internal link structure; and including GEO-optimized content blocks for AI search citation.</p></div>
+  <div class="toc"><h3>📋 Table of Contents</h3><ol><li><a href="#what-is">What is On-Page SEO?</a></li><li><a href="#title-meta">Title Tags & Meta Descriptions</a></li><li><a href="#headers">Header Hierarchy & Keyword Placement</a></li><li><a href="#schema">Schema Markup for Content Hubs</a></li><li><a href="#internal-links">Internal Linking Strategy</a></li><li><a href="#checklist">The Full On-Page SEO Checklist</a></li></ol></div>
+  <article>
+    <div class="definition-block" id="what-is"><div class="lbl">📖 Definition</div><p><strong>On-page SEO</strong> refers to all optimizations made directly within a web page — as opposed to off-page factors like backlinks. It covers content quality, keyword usage, technical elements (title tags, meta descriptions, canonical URLs), structured data (schema markup), and internal linking. For content hubs, on-page SEO is the foundation that makes topical authority visible to search engines.</p></div>
+
+    <div class="score-grid">
+      <div class="score-box"><div class="score-num" style="color:var(--brand)">~40%</div><div class="score-lbl">Ranking factors on-page controls</div></div>
+      <div class="score-box"><div class="score-num" style="color:var(--success)">2–4×</div><div class="score-lbl">Traffic lift from proper on-page vs. no optimization</div></div>
+      <div class="score-box"><div class="score-num" style="color:var(--warn)">53%</div><div class="score-lbl">Searches now result in zero clicks — structured data helps</div></div>
+    </div>
+
+    <h2 id="title-meta">Title Tags & Meta Descriptions</h2>
+    <p>The <strong>title tag</strong> is the single most important on-page SEO element. It tells search engines and users what the page is about, and it's the blue link text shown in SERPs.</p>
+    <ul>
+      <li>Include the primary keyword naturally — ideally near the front</li>
+      <li>Keep under 60 characters to avoid truncation</li>
+      <li>Write for humans first, include the brand name at the end: <em>Keyword Research Guide | ContentPro</em></li>
+      <li>Every page must have a unique title tag — no duplicates across your hub</li>
+    </ul>
+    <p>The <strong>meta description</strong> doesn't directly affect rankings, but a well-written one improves click-through rate — which is a ranking signal.</p>
+    <ul>
+      <li>Keep under 155 characters</li>
+      <li>Include the primary keyword and a clear value proposition</li>
+      <li>End with an implicit or explicit CTA: "Learn the complete framework →"</li>
+    </ul>
+    <div class="callout"><p>💡 <strong>GEO tip:</strong> Meta descriptions that are written as direct answers to a question are more likely to be pulled by AI systems as a summary. Write them as "X is Y. This guide covers A, B, and C."</p></div>
+
+    <h2 id="headers">Header Hierarchy & Keyword Placement</h2>
+    <p>Use one <code style="background:var(--gray-100);padding:.1rem .3rem;border-radius:4px">H1</code> per page (the main title), followed by <code style="background:var(--gray-100);padding:.1rem .3rem;border-radius:4px">H2</code> section headers and <code style="background:var(--gray-100);padding:.1rem .3rem;border-radius:4px">H3</code> subsections. Each header is a ranking opportunity — work in secondary keywords naturally.</p>
+    <p>Place your primary keyword in: the H1, the first 100 words, at least one H2, and the meta description. Avoid keyword stuffing — natural usage in context performs better than forced repetition.</p>
+
+    <h2 id="schema">Schema Markup for Content Hubs</h2>
+    <p>Schema markup is JSON-LD structured data that tells search engines (and AI engines) exactly what type of content a page contains and how it relates to other pages.</p>
+    <table class="schema-table">
+      <thead><tr><th>Schema Type</th><th>Use On</th><th>Benefit</th></tr></thead>
+      <tbody>
+        <tr><td><span class="schema-badge">Article</span></td><td>All pillar & cluster pages</td><td>Signals content type, authorship, publish date to crawlers</td></tr>
+        <tr><td><span class="schema-badge">FAQPage</span></td><td>All FAQ pages</td><td>Enables rich snippet Q&A dropdowns in SERPs; boosts AI citation</td></tr>
+        <tr><td><span class="schema-badge">BreadcrumbList</span></td><td>Every page in the hub</td><td>Shows site hierarchy in search results; improves click-through</td></tr>
+        <tr><td><span class="schema-badge">HowTo</span></td><td>Step-by-step guides</td><td>Enables rich step-by-step results in SERPs</td></tr>
+        <tr><td><span class="schema-badge">WebSite</span></td><td>Hub homepage only</td><td>Enables sitelinks search box in brand search results</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="internal-links">Internal Linking Strategy</h2>
+    <p>Internal links pass PageRank between pages and help search engines understand your site's topical hierarchy. For a content hub:</p>
+    <ul>
+      <li>Every cluster article links back to the pillar page using keyword-rich anchor text</li>
+      <li>The pillar page links out to every cluster article</li>
+      <li>Related cluster articles cross-link to each other where relevant</li>
+      <li>FAQ pages link to the relevant cluster article for deeper reading</li>
+    </ul>
+    <p>Avoid generic anchor text like "click here" — use descriptive anchors like "see our keyword research guide" that contain the target keyword of the destination page.</p>
+
+    <h2 id="checklist">The Full On-Page SEO Checklist</h2>
+    <p>Use this checklist before publishing any content hub page. Click each item to mark it complete.</p>
+    <div class="checklist">
+      <div class="checklist-header">🔍 Title & Meta</div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>Primary keyword in title tag</strong><span>Near the front, under 60 characters, includes brand name</span></div></div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>Unique meta description</strong><span>Under 155 characters, includes keyword, sounds like a direct answer</span></div></div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>Canonical URL set</strong><span>Prevents duplicate content issues</span></div></div>
+    </div>
+    <div class="checklist">
+      <div class="checklist-header">📝 Content Structure</div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>One H1 per page</strong><span>Contains primary keyword, matches or closely mirrors title tag</span></div></div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>Primary keyword in first 100 words</strong><span>Naturally worked into the intro paragraph</span></div></div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>Secondary keywords in H2s</strong><span>Each H2 targets a related subtopic or long-tail variation</span></div></div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>Answer-first intro block</strong><span>GEO: direct answer in first visible paragraph for AI citation</span></div></div>
+    </div>
+    <div class="checklist">
+      <div class="checklist-header">🏷️ Schema & Technical</div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>Article schema added</strong><span>JSON-LD in &lt;head&gt; with headline, author, publisher, datePublished</span></div></div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>BreadcrumbList schema added</strong><span>Reflects actual URL hierarchy of the page</span></div></div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>FAQPage schema on FAQ pages</strong><span>All Q&A pairs mirrored in JSON-LD</span></div></div>
+    </div>
+    <div class="checklist">
+      <div class="checklist-header">🔗 Internal Linking</div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>Links back to pillar page</strong><span>At least 1 contextual link with keyword-rich anchor text</span></div></div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>Links to related cluster articles</strong><span>Cross-links to 2-3 related articles in the hub</span></div></div>
+      <div class="checklist-item"><div class="chk" onclick="this.classList.toggle('checked')"></div><div class="chk-text"><strong>No orphan pages</strong><span>Every page is linked to from at least one other hub page</span></div></div>
+    </div>
+
+    <div class="back-to-pillar"><div><p><strong>This is part of the Content Marketing Strategy Hub.</strong><br>Return to the pillar for the full topic overview.</p></div><a href="pillar-page.html" class="back-btn">🏛️ Back to Pillar Page</a></div>
+    <h3 style="font-size:1rem;color:var(--gray-700);margin-bottom:.75rem">📚 Continue Reading</h3>
+    <div class="related-grid">
+      <a href="article-keyword-research.html" class="rc"><div class="rc-type">📄 Cluster Article</div><div class="rc-title">Keyword Research & Intent Mapping</div></a>
+      <a href="article-content-distribution.html" class="rc"><div class="rc-type">📄 Next Article</div><div class="rc-title">Content Distribution Strategy</div></a>
+      <a href="faq-content-marketing.html" class="rc"><div class="rc-type">❓ FAQ Page</div><div class="rc-title">Content Marketing FAQs</div></a>
+    </div>
+  </article>
+</div>
+<aside class="sidebar">
+  <div class="sidebar-widget"><h3>📚 Hub Navigation</h3><a href="index.html" class="sl">🏠 Hub Overview</a><a href="pillar-page.html" class="sl">🏛️ Strategy Guide (Pillar)</a><a href="article-keyword-research.html" class="sl">📄 Keyword Research</a><a href="article-content-creation.html" class="sl">📄 Content Creation</a><a href="article-seo-optimization.html" class="sl active">📄 On-Page SEO</a><a href="article-content-distribution.html" class="sl">📄 Distribution</a><a href="article-content-analytics.html" class="sl">📄 Analytics</a><a href="faq-content-marketing.html" class="sl">❓ FAQs</a></div>
+  <div class="sidebar-widget" style="background:var(--brand-light);border-color:#c7d2fe"><h3 style="color:var(--brand)">⚡ Build Your Hub</h3><p style="font-size:.78rem;color:var(--brand-dark);margin-bottom:.75rem;line-height:1.4">Auto-generate schema markup and SEO-optimized pages for any topic.</p><a href="../content-hub-generator.html" style="display:block;background:var(--brand);color:white;text-align:center;padding:.6rem;border-radius:8px;text-decoration:none;font-size:.82rem;font-weight:700">Open Generator →</a></div>
+</aside>
+</div>
+<footer><p>© 2026 ContentPro · Built with Content Hub Generator</p><p style="margin-top:.5rem"><a href="index.html">Hub Home</a><a href="pillar-page.html">Strategy Guide</a><a href="faq-content-marketing.html">FAQs</a><a href="../content-hub-generator.html">Generator</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Hub Agency — SEO & GEO Optimized Content Hub Builder</title>
+<meta name="description" content="The complete Content Hub Agency toolkit. Build SEO and GEO-optimized content hubs that rank on Google and get cited by AI search engines like Perplexity, ChatGPT, and Gemini.">
+<style>
+  :root {
+    --brand: #4f46e5; --brand-light: #eef2ff; --brand-dark: #3730a3;
+    --accent: #06b6d4; --accent-light: #ecfeff;
+    --success: #10b981; --warn: #f59e0b;
+    --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb;
+    --gray-400: #9ca3af; --gray-500: #6b7280; --gray-600: #4b5563;
+    --gray-700: #374151; --gray-800: #1f2937; --gray-900: #111827;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--gray-50); color: var(--gray-800); line-height: 1.6; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); padding: 0 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,.4); }
+  .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: .6rem; color: white; text-decoration: none; font-weight: 800; font-size: 1.1rem; }
+  .logo-icon { width: 34px; height: 34px; background: linear-gradient(135deg, #818cf8, #06b6d4); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  .nav { display: flex; gap: .25rem; }
+  .nav a { color: rgba(255,255,255,.75); text-decoration: none; font-size: .82rem; font-weight: 500; padding: .4rem .85rem; border-radius: 6px; transition: all .15s; }
+  .nav a:hover { color: white; background: rgba(255,255,255,.1); }
+  .nav-cta { background: rgba(255,255,255,.15) !important; color: white !important; border: 1px solid rgba(255,255,255,.2) !important; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, #0f0c29 0%, #302b63 45%, #1e40af 100%); color: white; padding: 6rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 50%, rgba(129,140,248,.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(6,182,212,.1) 0%, transparent 50%); }
+  .hero-inner { max-width: 720px; margin: 0 auto; position: relative; }
+  .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); padding: .4rem 1.1rem; border-radius: 999px; font-size: .75rem; font-weight: 600; margin-bottom: 1.75rem; letter-spacing: .02em; }
+  .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(1.2)} }
+  h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; letter-spacing: -.04em; }
+  h1 .grad { background: linear-gradient(135deg, #a5b4fc 0%, #67e8f9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.1rem; opacity: .8; max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.65; }
+  .hero-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-primary { background: white; color: var(--brand); padding: .9rem 2rem; border-radius: 10px; font-weight: 800; font-size: .95rem; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; box-shadow: 0 8px 30px rgba(0,0,0,.25); transition: transform .2s; }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-secondary { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); color: white; padding: .9rem 2rem; border-radius: 10px; font-weight: 600; font-size: .95rem; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; transition: background .15s; }
+  .btn-secondary:hover { background: rgba(255,255,255,.2); }
+  .hero-proof { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; }
+  .proof-item { text-align: center; }
+  .proof-num { font-size: 1.8rem; font-weight: 800; line-height: 1; background: linear-gradient(135deg, #a5b4fc, #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .proof-label { font-size: .72rem; color: rgba(255,255,255,.5); margin-top: .2rem; text-transform: uppercase; letter-spacing: .06em; }
+
+  /* Features band */
+  .features-band { background: white; border-bottom: 1px solid var(--gray-100); padding: 1rem 2rem; }
+  .features-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+  .feat-item { display: flex; align-items: center; gap: .5rem; font-size: .8rem; color: var(--gray-600); font-weight: 500; }
+  .feat-item .fi { color: var(--success); font-size: .9rem; }
+
+  /* Section */
+  .section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+  .section-eyebrow { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--brand); font-weight: 700; margin-bottom: .6rem; }
+  .section-title { font-size: 2rem; font-weight: 800; color: var(--gray-900); margin-bottom: .75rem; letter-spacing: -.02em; }
+  .section-sub { font-size: .95rem; color: var(--gray-500); max-width: 520px; line-height: 1.6; margin-bottom: 2.5rem; }
+
+  /* Tool cards */
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.25rem; }
+  .tool-card { background: white; border: 1px solid var(--gray-200); border-radius: 16px; overflow: hidden; transition: all .2s; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  .tool-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,.1); transform: translateY(-4px); }
+  .tool-card-top { height: 8px; }
+  .tc-purple { background: linear-gradient(90deg, #4f46e5, #818cf8); }
+  .tc-cyan { background: linear-gradient(90deg, #06b6d4, #67e8f9); }
+  .tc-green { background: linear-gradient(90deg, #10b981, #6ee7b7); }
+  .tool-card-body { padding: 1.5rem; }
+  .tool-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+  .ti-purple { background: var(--brand-light); }
+  .ti-cyan { background: var(--accent-light); }
+  .ti-green { background: #dcfce7; }
+  .tool-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--gray-900); margin-bottom: .4rem; }
+  .tool-card p { font-size: .85rem; color: var(--gray-500); line-height: 1.55; margin-bottom: 1.25rem; }
+  .tool-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .tool-tag { padding: .2rem .6rem; border-radius: 6px; font-size: .68rem; font-weight: 600; background: var(--gray-100); color: var(--gray-600); }
+  .tool-action { display: flex; gap: .6rem; }
+  .tc-btn { padding: .55rem 1rem; border-radius: 8px; font-size: .82rem; font-weight: 700; text-decoration: none; transition: all .15s; display: inline-flex; align-items: center; gap: .35rem; }
+  .tc-btn-primary { background: var(--brand); color: white; }
+  .tc-btn-primary:hover { background: var(--brand-dark); }
+  .tc-btn-secondary { background: var(--gray-100); color: var(--gray-700); }
+  .tc-btn-secondary:hover { background: var(--gray-200); }
+  .tc-btn.cyan { background: var(--accent); }
+  .tc-btn.cyan:hover { background: #0891b2; }
+  .tc-btn.green { background: var(--success); }
+  .tc-btn.green:hover { background: #059669; }
+
+  /* How it works */
+  .hiw-bg { background: linear-gradient(135deg, #f8faff, #f0f9ff); }
+  .hiw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .hiw-step { background: white; border: 1px solid var(--gray-200); border-radius: 14px; padding: 1.5rem; position: relative; box-shadow: 0 1px 4px rgba(0,0,0,.05); }
+  .hiw-num { width: 36px; height: 36px; background: var(--brand); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; margin-bottom: 1rem; }
+  .hiw-step h3 { font-size: .95rem; font-weight: 700; color: var(--gray-900); margin-bottom: .4rem; }
+  .hiw-step p { font-size: .8rem; color: var(--gray-500); line-height: 1.5; }
+  .hiw-arrow { position: absolute; right: -16px; top: 50%; transform: translateY(-50%); color: var(--gray-300); font-size: 1.2rem; z-index: 1; }
+  @media (max-width: 768px) { .hiw-arrow { display: none; } }
+
+  /* What's included */
+  .included-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .included-card { background: white; border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; display: flex; gap: 1rem; align-items: flex-start; }
+  .inc-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .inc-text h4 { font-size: .88rem; font-weight: 700; color: var(--gray-900); margin-bottom: .25rem; }
+  .inc-text p { font-size: .78rem; color: var(--gray-500); line-height: 1.4; }
+  .inc-check { font-size: .75rem; color: var(--success); font-weight: 700; margin-top: .3rem; }
+
+  /* Example hub preview */
+  .preview-bg { background: var(--gray-900); }
+  .preview-section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+  .preview-section .section-eyebrow { color: #a5b4fc; }
+  .preview-section .section-title { color: white; }
+  .preview-section .section-sub { color: rgba(255,255,255,.6); }
+  .preview-pages { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; }
+  .preview-page { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 1rem; text-decoration: none; transition: all .2s; }
+  .preview-page:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); transform: translateY(-2px); }
+  .pp-type { font-size: .62rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin-bottom: .4rem; }
+  .pp-type-pillar { color: #a5b4fc; }
+  .pp-type-cluster { color: #6ee7b7; }
+  .pp-type-faq { color: #67e8f9; }
+  .pp-title { font-size: .82rem; font-weight: 600; color: white; line-height: 1.3; margin-bottom: .4rem; }
+  .pp-tags { display: flex; gap: .3rem; flex-wrap: wrap; }
+  .pp-tag { padding: .15rem .45rem; border-radius: 4px; font-size: .6rem; font-weight: 600; background: rgba(255,255,255,.1); color: rgba(255,255,255,.7); }
+
+  /* CTA section */
+  .cta-section { background: linear-gradient(135deg, var(--brand) 0%, #6366f1 50%, var(--accent) 100%); color: white; padding: 5rem 2rem; text-align: center; }
+  .cta-inner { max-width: 600px; margin: 0 auto; }
+  .cta-section h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: .75rem; letter-spacing: -.02em; }
+  .cta-section p { font-size: 1rem; opacity: .85; margin-bottom: 2rem; line-height: 1.6; }
+  .cta-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+  .cta-btn-white { background: white; color: var(--brand); padding: .9rem 2rem; border-radius: 10px; font-weight: 800; font-size: .95rem; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.2); transition: transform .2s; }
+  .cta-btn-white:hover { transform: translateY(-2px); }
+  .cta-btn-outline { border: 2px solid rgba(255,255,255,.4); color: white; padding: .9rem 2rem; border-radius: 10px; font-weight: 700; font-size: .95rem; text-decoration: none; transition: all .15s; }
+  .cta-btn-outline:hover { border-color: white; background: rgba(255,255,255,.1); }
+
+  footer { background: var(--gray-900); color: var(--gray-400); padding: 3rem 2rem 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+  @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+  .footer-brand-name { font-size: 1rem; font-weight: 800; color: white; margin-bottom: .5rem; display: flex; align-items: center; gap: .5rem; }
+  .footer-brand-icon { width: 24px; height: 24px; background: linear-gradient(135deg, #818cf8, #06b6d4); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .75rem; }
+  .footer-brand-desc { font-size: .78rem; color: var(--gray-500); line-height: 1.5; }
+  .footer-col h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--gray-500); font-weight: 700; margin-bottom: .75rem; }
+  .footer-col a { display: block; font-size: .8rem; color: var(--gray-400); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+  .footer-col a:hover { color: white; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: .75rem; }
+  .footer-badges { display: flex; gap: .5rem; }
+  .f-badge { padding: .2rem .6rem; border-radius: 6px; font-size: .65rem; font-weight: 600; border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.5); }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">🌐</div>
+      Content Hub Agency
+    </a>
+    <nav class="nav">
+      <a href="content-hub-generator.html">Generator</a>
+      <a href="agency-intake.html">Client Intake</a>
+      <a href="hub-example/index.html">Example Hub</a>
+      <a href="agency-intake.html" class="nav-cta">✍️ Start Brief</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="hero-badge-dot"></div> SEO + GEO Optimized Content Hub Builder</div>
+    <h1>Build Content Hubs That <span class="grad">Rank & Get Cited</span></h1>
+    <p class="hero-sub">Generate complete, SEO-optimized content hub websites — with topic clusters, schema markup, and GEO formatting that gets cited by AI search engines like Perplexity, ChatGPT, and Gemini.</p>
+    <div class="hero-actions">
+      <a href="content-hub-generator.html" class="btn-primary">⚡ Open Hub Generator</a>
+      <a href="agency-intake.html" class="btn-secondary">✍️ Start a Client Brief</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-item"><div class="proof-num">9</div><div class="proof-label">Page templates</div></div>
+      <div class="proof-item"><div class="proof-num">4</div><div class="proof-label">Schema types</div></div>
+      <div class="proof-item"><div class="proof-num">6</div><div class="proof-label">GEO optimizations</div></div>
+      <div class="proof-item"><div class="proof-num">∞</div><div class="proof-label">Topics supported</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Features band -->
+<div class="features-band">
+  <div class="features-inner">
+    <div class="feat-item"><span class="fi">✓</span> Article Schema</div>
+    <div class="feat-item"><span class="fi">✓</span> FAQPage Schema</div>
+    <div class="feat-item"><span class="fi">✓</span> BreadcrumbList Schema</div>
+    <div class="feat-item"><span class="fi">✓</span> Answer-First GEO Blocks</div>
+    <div class="feat-item"><span class="fi">✓</span> Topic Cluster Architecture</div>
+    <div class="feat-item"><span class="fi">✓</span> Internal Linking System</div>
+    <div class="feat-item"><span class="fi">✓</span> Downloadable HTML Pages</div>
+  </div>
+</div>
+
+<!-- Tools section -->
+<div class="section">
+  <div class="section-eyebrow">🛠️ Agency Toolkit</div>
+  <div class="section-title">Three Tools, One Complete System</div>
+  <p class="section-sub">Everything you need to plan, build, and deploy a content hub — from client intake to published, optimized pages.</p>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-card-top tc-purple"></div>
+      <div class="tool-card-body">
+        <div class="tool-icon ti-purple">⚡</div>
+        <h3>Content Hub Generator</h3>
+        <p>Input your topic, add cluster articles and FAQ topics, configure SEO/GEO settings, and generate a complete content hub — all pages, all schema markup, fully downloadable.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Topic Clusters</span>
+          <span class="tool-tag">Schema Markup</span>
+          <span class="tool-tag">GEO Blocks</span>
+          <span class="tool-tag">HTML Export</span>
+        </div>
+        <div class="tool-action">
+          <a href="content-hub-generator.html" class="tc-btn tc-btn-primary">Open Generator →</a>
+          <a href="hub-example/index.html" class="tc-btn tc-btn-secondary">See Example</a>
+        </div>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-top tc-cyan"></div>
+      <div class="tool-card-body">
+        <div class="tool-icon ti-cyan">✍️</div>
+        <h3>Client Intake & Brief</h3>
+        <p>A structured intake form for new content hub projects. Captures brand info, audience, topic cluster, SEO settings, competitors, and timeline — then exports a JSON strategy brief.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Strategy Brief</span>
+          <span class="tool-tag">JSON Export</span>
+          <span class="tool-tag">Competitor Analysis</span>
+          <span class="tool-tag">Timeline</span>
+        </div>
+        <div class="tool-action">
+          <a href="agency-intake.html" class="tc-btn cyan">Open Intake Form →</a>
+        </div>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-top tc-green"></div>
+      <div class="tool-card-body">
+        <div class="tool-icon ti-green">🌐</div>
+        <h3>Example Content Hub</h3>
+        <p>A fully built example content hub on "Content Marketing Strategy" — showing every page type, all schema markup, GEO optimizations, and internal linking working together in production.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Pillar Page</span>
+          <span class="tool-tag">5 Cluster Articles</span>
+          <span class="tool-tag">FAQ Page</span>
+          <span class="tool-tag">Hub Homepage</span>
+        </div>
+        <div class="tool-action">
+          <a href="hub-example/index.html" class="tc-btn green">View Example Hub →</a>
+          <a href="hub-example/pillar-page.html" class="tc-btn tc-btn-secondary">Pillar Page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- How it works -->
+<div class="hiw-bg">
+  <div class="section">
+    <div class="section-eyebrow">🗺️ Process</div>
+    <div class="section-title">How It Works</div>
+    <p class="section-sub">From topic idea to live, optimized content hub in four steps.</p>
+    <div class="hiw-grid">
+      <div class="hiw-step">
+        <div class="hiw-num">1</div>
+        <h3>Fill the Intake Brief</h3>
+        <p>Enter your brand, pillar topic, cluster subtopics, audience, and SEO/GEO preferences in the intake form.</p>
+        <span class="hiw-arrow">→</span>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-num">2</div>
+        <h3>Generate Your Hub</h3>
+        <p>Open the Hub Generator, enter your topics, and preview your full topic cluster architecture with SEO score.</p>
+        <span class="hiw-arrow">→</span>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-num">3</div>
+        <h3>Download All Pages</h3>
+        <p>Export all HTML pages — pillar, cluster articles, FAQ pages, and hub homepage — with schema and GEO blocks baked in.</p>
+        <span class="hiw-arrow">→</span>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-num">4</div>
+        <h3>Populate & Publish</h3>
+        <p>Add your content to the templates, deploy to your host, and submit to Google Search Console. Rankings and AI citations follow.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- What's included -->
+<div class="section">
+  <div class="section-eyebrow">📦 Deliverables</div>
+  <div class="section-title">What Every Hub Includes</div>
+  <p class="section-sub">Every generated content hub ships with these components pre-built and optimized.</p>
+  <div class="included-grid">
+    <div class="included-card"><div class="inc-icon" style="background:var(--brand-light)">🏛️</div><div class="inc-text"><h4>Pillar Page</h4><p>Comprehensive topic overview with TOC, definition blocks, cluster link grid, and answer-first sections.</p><div class="inc-check">✓ Article + Breadcrumb Schema</div></div></div>
+    <div class="included-card"><div class="inc-icon" style="background:#dcfce7">📄</div><div class="inc-text"><h4>Cluster Articles</h4><p>Deep-dive articles on each subtopic, each linking back to the pillar. Structured with H2-based sections.</p><div class="inc-check">✓ Article + HowTo Schema</div></div></div>
+    <div class="included-card"><div class="inc-icon" style="background:var(--accent-light)">❓</div><div class="inc-text"><h4>FAQ Pages</h4><p>Accordion-style Q&A pages with category filters, FAQPage schema, and answer-first formatting for AI citation.</p><div class="inc-check">✓ FAQPage + Article Schema</div></div></div>
+    <div class="included-card"><div class="inc-icon" style="background:#fef9c3">🏠</div><div class="inc-text"><h4>Hub Homepage</h4><p>Content index page with hero, stats band, content grid, cluster architecture map, and GEO panel.</p><div class="inc-check">✓ WebSite + Breadcrumb Schema</div></div></div>
+    <div class="included-card"><div class="inc-icon" style="background:#fdf4ff">🏷️</div><div class="inc-text"><h4>Schema Markup</h4><p>JSON-LD structured data for Article, FAQPage, BreadcrumbList, HowTo, and WebSite — embedded in every page.</p><div class="inc-check">✓ Rich results eligible</div></div></div>
+    <div class="included-card"><div class="inc-icon" style="background:#f0fdf4">🤖</div><div class="inc-text"><h4>GEO Optimization Blocks</h4><p>Answer-first intros, definition boxes, callouts, tip blocks, and stats sections — all optimized for AI citation.</p><div class="inc-check">✓ Perplexity, ChatGPT, Gemini</div></div></div>
+    <div class="included-card"><div class="inc-icon" style="background:var(--brand-light)">🔗</div><div class="inc-text"><h4>Internal Linking System</h4><p>Every cluster article links to the pillar. The pillar links to all clusters. Sidebar navigation on all pages.</p><div class="inc-check">✓ Topical authority structure</div></div></div>
+    <div class="included-card"><div class="inc-icon" style="background:#fffbeb">📊</div><div class="inc-text"><h4>SEO Readiness Score</h4><p>Live readiness score in the Generator showing which optimizations are active and what's still missing.</p><div class="inc-check">✓ 8-point scoring system</div></div></div>
+  </div>
+</div>
+
+<!-- Example hub preview -->
+<div class="preview-bg">
+  <div class="preview-section">
+    <div class="section-eyebrow">🌐 Live Example</div>
+    <div class="section-title" style="color:white">See the Full Example Hub</div>
+    <p class="section-sub">A complete content hub on "Content Marketing Strategy" — every page type, fully built and linked.</p>
+    <div class="preview-pages">
+      <a href="hub-example/index.html" class="preview-page">
+        <div class="pp-type pp-type-pillar">🏠 Hub Homepage</div>
+        <div class="pp-title">Content Marketing Strategy Hub</div>
+        <div class="pp-tags"><span class="pp-tag">WebSite Schema</span><span class="pp-tag">Cluster Map</span></div>
+      </a>
+      <a href="hub-example/pillar-page.html" class="preview-page">
+        <div class="pp-type pp-type-pillar">🏛️ Pillar Page</div>
+        <div class="pp-title">The Complete Guide to Content Marketing Strategy</div>
+        <div class="pp-tags"><span class="pp-tag">Article Schema</span><span class="pp-tag">Breadcrumb</span></div>
+      </a>
+      <a href="hub-example/article-keyword-research.html" class="preview-page">
+        <div class="pp-type pp-type-cluster">📄 Cluster Article</div>
+        <div class="pp-title">Keyword Research & Intent Mapping</div>
+        <div class="pp-tags"><span class="pp-tag">Article</span><span class="pp-tag">HowTo</span></div>
+      </a>
+      <a href="hub-example/article-content-creation.html" class="preview-page">
+        <div class="pp-type pp-type-cluster">📄 Cluster Article</div>
+        <div class="pp-title">Content Creation at Scale</div>
+        <div class="pp-tags"><span class="pp-tag">Article</span><span class="pp-tag">HowTo</span></div>
+      </a>
+      <a href="hub-example/article-seo-optimization.html" class="preview-page">
+        <div class="pp-type pp-type-cluster">📄 Cluster Article</div>
+        <div class="pp-title">On-Page SEO Best Practices</div>
+        <div class="pp-tags"><span class="pp-tag">Article</span><span class="pp-tag">Checklist</span></div>
+      </a>
+      <a href="hub-example/article-content-distribution.html" class="preview-page">
+        <div class="pp-type pp-type-cluster">📄 Cluster Article</div>
+        <div class="pp-title">Content Distribution Strategy</div>
+        <div class="pp-tags"><span class="pp-tag">Article</span><span class="pp-tag">Tables</span></div>
+      </a>
+      <a href="hub-example/article-content-analytics.html" class="preview-page">
+        <div class="pp-type pp-type-cluster">📄 Cluster Article</div>
+        <div class="pp-title">Content Analytics & Measurement</div>
+        <div class="pp-tags"><span class="pp-tag">Article</span><span class="pp-tag">Metrics</span></div>
+      </a>
+      <a href="hub-example/faq-content-marketing.html" class="preview-page">
+        <div class="pp-type pp-type-faq">❓ FAQ Page</div>
+        <div class="pp-title">Content Marketing FAQs — 12 Questions Answered</div>
+        <div class="pp-tags"><span class="pp-tag">FAQPage</span><span class="pp-tag">Article</span></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Ready to Build Your Content Hub?</h2>
+    <p>Start with the Hub Generator to build pages, or fill out the intake form to plan your full strategy. Everything you need is here.</p>
+    <div class="cta-actions">
+      <a href="content-hub-generator.html" class="cta-btn-white">⚡ Open Hub Generator</a>
+      <a href="agency-intake.html" class="cta-btn-outline">✍️ Start Intake Brief</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name"><div class="footer-brand-icon">🌐</div> Content Hub Agency</div>
+        <p class="footer-brand-desc">Build SEO & GEO-optimized content hubs that rank on Google and get cited by AI search engines. Topic clusters, schema markup, and answer-first content — all generated automatically.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <a href="content-hub-generator.html">Hub Generator</a>
+        <a href="agency-intake.html">Client Intake</a>
+        <a href="hub-example/index.html">Example Hub</a>
+      </div>
+      <div class="footer-col">
+        <h4>Example Pages</h4>
+        <a href="hub-example/pillar-page.html">Pillar Page</a>
+        <a href="hub-example/article-keyword-research.html">Cluster Article</a>
+        <a href="hub-example/faq-content-marketing.html">FAQ Page</a>
+      </div>
+      <div class="footer-col">
+        <h4>Features</h4>
+        <a href="#">Topic Clusters</a>
+        <a href="#">Schema Markup</a>
+        <a href="#">GEO Optimization</a>
+        <a href="#">Internal Linking</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Content Hub Agency. All pages generated with Content Hub Generator.</span>
+      <div class="footer-badges">
+        <span class="f-badge">SEO Optimized</span>
+        <span class="f-badge">GEO Ready</span>
+        <span class="f-badge">Schema Markup</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

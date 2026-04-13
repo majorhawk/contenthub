@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Hub Generator — SEO & GEO Agency</title>
+<style>
+  :root {
+    --brand: #4f46e5;
+    --brand-light: #eef2ff;
+    --brand-dark: #3730a3;
+    --accent: #06b6d4;
+    --accent-light: #ecfeff;
+    --success: #10b981;
+    --warn: #f59e0b;
+    --danger: #ef4444;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--gray-50); color: var(--gray-800); min-height: 100vh; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e40af 100%); color: white; padding: 0 2rem; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-lg); }
+  .header-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: .75rem; font-weight: 700; font-size: 1.1rem; letter-spacing: -.02em; }
+  .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #818cf8, #06b6d4); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .header-badges { display: flex; gap: .5rem; }
+  .badge { padding: .25rem .75rem; border-radius: 999px; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .badge-seo { background: rgba(6,182,212,.2); color: #67e8f9; border: 1px solid rgba(6,182,212,.3); }
+  .badge-geo { background: rgba(129,140,248,.2); color: #a5b4fc; border: 1px solid rgba(129,140,248,.3); }
+
+  /* Layout */
+  .app { max-width: 1400px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 380px 1fr; gap: 1.5rem; }
+  @media (max-width: 900px) { .app { grid-template-columns: 1fr; padding: 1rem; } }
+
+  /* Sidebar */
+  .sidebar { display: flex; flex-direction: column; gap: 1rem; }
+  .card { background: white; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--gray-200); overflow: hidden; }
+  .card-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; gap: .5rem; }
+  .card-header h3 { font-size: .875rem; font-weight: 600; color: var(--gray-700); }
+  .card-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .85rem; flex-shrink: 0; }
+  .card-body { padding: 1.25rem; }
+
+  /* Form */
+  label { display: block; font-size: .8rem; font-weight: 600; color: var(--gray-600); margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .04em; }
+  input[type="text"], input[type="url"], textarea, select {
+    width: 100%; padding: .6rem .8rem; border: 1px solid var(--gray-300); border-radius: 8px;
+    font-size: .875rem; color: var(--gray-800); background: white; outline: none; transition: border .15s;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(79,70,229,.1); }
+  textarea { resize: vertical; min-height: 80px; font-family: inherit; }
+  .form-group { margin-bottom: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+
+  /* Topic Pills */
+  .topic-input-wrap { display: flex; gap: .5rem; }
+  .topic-input-wrap input { flex: 1; }
+  .btn-add { padding: .6rem 1rem; background: var(--brand); color: white; border: none; border-radius: 8px; font-size: .8rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background .15s; }
+  .btn-add:hover { background: var(--brand-dark); }
+  .pills { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; min-height: 28px; }
+  .pill { display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .7rem; background: var(--brand-light); color: var(--brand); border-radius: 999px; font-size: .78rem; font-weight: 600; border: 1px solid rgba(79,70,229,.15); }
+  .pill-pillar { background: #fef3c7; color: #92400e; border-color: rgba(245,158,11,.2); }
+  .pill-remove { cursor: pointer; opacity: .5; font-size: .9rem; line-height: 1; transition: opacity .1s; }
+  .pill-remove:hover { opacity: 1; }
+
+  /* Buttons */
+  .btn { padding: .65rem 1.25rem; border-radius: 8px; font-size: .875rem; font-weight: 600; cursor: pointer; border: none; transition: all .15s; display: inline-flex; align-items: center; gap: .5rem; }
+  .btn-primary { background: linear-gradient(135deg, var(--brand), #6366f1); color: white; width: 100%; justify-content: center; padding: .85rem; font-size: .95rem; box-shadow: 0 4px 14px rgba(79,70,229,.35); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(79,70,229,.4); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+  .btn-outline { background: white; color: var(--brand); border: 1px solid var(--brand); }
+  .btn-outline:hover { background: var(--brand-light); }
+  .btn-success { background: var(--success); color: white; }
+  .btn-sm { padding: .4rem .8rem; font-size: .78rem; }
+
+  /* Checkboxes */
+  .check-group { display: flex; flex-direction: column; gap: .5rem; }
+  .check-item { display: flex; align-items: center; gap: .6rem; cursor: pointer; padding: .5rem .6rem; border-radius: 6px; border: 1px solid var(--gray-200); transition: background .1s; }
+  .check-item:hover { background: var(--gray-50); }
+  .check-item input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--brand); cursor: pointer; flex-shrink: 0; }
+  .check-item span { font-size: .82rem; color: var(--gray-700); font-weight: 500; }
+  .check-item small { font-size: .72rem; color: var(--gray-400); display: block; }
+
+  /* Main content area */
+  .main { display: flex; flex-direction: column; gap: 1rem; }
+
+  /* Hub Architecture Visualizer */
+  .hub-visual { min-height: 340px; position: relative; display: flex; align-items: flex-start; justify-content: center; padding: 1.5rem; }
+  .hub-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 260px; color: var(--gray-400); gap: .75rem; text-align: center; }
+  .hub-empty .empty-icon { font-size: 3rem; opacity: .4; }
+  .hub-empty p { font-size: .875rem; max-width: 260px; line-height: 1.5; }
+
+  /* Cluster visualization */
+  .cluster-viz { width: 100%; }
+  .pillar-node { background: linear-gradient(135deg, #1e1b4b, #4f46e5); color: white; border-radius: 12px; padding: 1rem 1.25rem; text-align: center; margin: 0 auto 1.5rem; max-width: 300px; box-shadow: 0 8px 24px rgba(79,70,229,.3); position: relative; }
+  .pillar-node::after { content: ''; position: absolute; bottom: -1.5rem; left: 50%; transform: translateX(-50%); width: 2px; height: 1.5rem; background: var(--gray-300); }
+  .pillar-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; opacity: .7; margin-bottom: .3rem; }
+  .pillar-title { font-size: .95rem; font-weight: 700; }
+  .pillar-meta { display: flex; gap: .5rem; justify-content: center; margin-top: .5rem; flex-wrap: wrap; }
+  .meta-tag { background: rgba(255,255,255,.15); padding: .15rem .5rem; border-radius: 999px; font-size: .65rem; font-weight: 600; }
+  .cluster-row { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; position: relative; }
+  .cluster-row::before { content: ''; position: absolute; top: -1px; left: 15%; right: 15%; height: 2px; background: var(--gray-200); }
+  .cluster-node { background: white; border: 2px solid var(--gray-200); border-radius: 10px; padding: .7rem .9rem; flex: 1; min-width: 140px; max-width: 200px; position: relative; transition: all .2s; cursor: pointer; box-shadow: var(--shadow); }
+  .cluster-node::before { content: ''; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 2px; height: 12px; background: var(--gray-300); }
+  .cluster-node:hover { border-color: var(--brand); box-shadow: 0 4px 12px rgba(79,70,229,.15); transform: translateY(-2px); }
+  .cluster-node.faq-node { border-color: var(--accent); }
+  .cluster-node.faq-node:hover { border-color: var(--accent); }
+  .cluster-type { font-size: .6rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--gray-400); margin-bottom: .25rem; }
+  .cluster-type.type-pillar { color: var(--brand); }
+  .cluster-type.type-faq { color: var(--accent); }
+  .cluster-type.type-article { color: var(--success); }
+  .cluster-title { font-size: .78rem; font-weight: 600; color: var(--gray-800); line-height: 1.35; }
+  .cluster-kw { font-size: .65rem; color: var(--gray-400); margin-top: .25rem; }
+
+  /* Stats bar */
+  .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; }
+  .stat-card { background: white; border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200); text-align: center; box-shadow: var(--shadow); }
+  .stat-num { font-size: 1.6rem; font-weight: 800; line-height: 1; margin-bottom: .25rem; }
+  .stat-label { font-size: .72rem; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
+  .stat-num.c1 { color: var(--brand); }
+  .stat-num.c2 { color: var(--accent); }
+  .stat-num.c3 { color: var(--success); }
+  .stat-num.c4 { color: var(--warn); }
+
+  /* Page previews */
+  .pages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .75rem; }
+  .page-card { border: 1px solid var(--gray-200); border-radius: 10px; background: white; overflow: hidden; transition: all .2s; box-shadow: var(--shadow); }
+  .page-card:hover { box-shadow: var(--shadow-md); border-color: var(--gray-300); transform: translateY(-1px); }
+  .page-card-head { padding: .7rem 1rem; display: flex; align-items: center; gap: .6rem; border-bottom: 1px solid var(--gray-100); }
+  .page-type-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .85rem; flex-shrink: 0; }
+  .icon-pillar { background: var(--brand-light); }
+  .icon-cluster { background: #dcfce7; }
+  .icon-faq { background: var(--accent-light); }
+  .icon-home { background: #fef9c3; }
+  .page-card-head h4 { font-size: .8rem; font-weight: 600; color: var(--gray-800); line-height: 1.3; }
+  .page-card-body { padding: .75rem 1rem; }
+  .page-meta { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .6rem; }
+  .tag { padding: .2rem .55rem; border-radius: 999px; font-size: .65rem; font-weight: 600; }
+  .tag-pillar { background: var(--brand-light); color: var(--brand); }
+  .tag-cluster { background: #dcfce7; color: #166534; }
+  .tag-faq { background: var(--accent-light); color: #0e7490; }
+  .tag-schema { background: #fef9c3; color: #713f12; }
+  .page-desc { font-size: .75rem; color: var(--gray-400); line-height: 1.5; }
+  .page-actions { padding: .6rem 1rem; border-top: 1px solid var(--gray-100); display: flex; gap: .4rem; }
+  .btn-generate { padding: .35rem .7rem; background: var(--brand); color: white; border: none; border-radius: 6px; font-size: .72rem; font-weight: 600; cursor: pointer; transition: background .15s; display: flex; align-items: center; gap: .3rem; }
+  .btn-generate:hover { background: var(--brand-dark); }
+  .btn-generate.btn-teal { background: var(--accent); }
+  .btn-generate.btn-teal:hover { background: #0891b2; }
+
+  /* SEO Score */
+  .seo-score-ring { display: flex; justify-content: center; padding: 1rem 0; }
+  .ring-wrap { position: relative; width: 100px; height: 100px; }
+  .ring-wrap svg { transform: rotate(-90deg); }
+  .ring-num { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 1.5rem; font-weight: 800; color: var(--success); }
+  .ring-label { font-size: .55rem; color: var(--gray-400); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+  .score-items { display: flex; flex-direction: column; gap: .5rem; margin-top: .5rem; }
+  .score-item { display: flex; align-items: center; justify-content: space-between; font-size: .75rem; }
+  .score-item-label { color: var(--gray-600); display: flex; align-items: center; gap: .4rem; }
+  .score-item-val { font-weight: 700; }
+  .dot-green { width: 8px; height: 8px; border-radius: 50%; background: var(--success); flex-shrink: 0; }
+  .dot-yellow { width: 8px; height: 8px; border-radius: 50%; background: var(--warn); flex-shrink: 0; }
+  .dot-blue { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); flex-shrink: 0; }
+
+  /* Schema preview */
+  .schema-preview { background: #0f172a; border-radius: 8px; padding: 1rem; font-family: 'Courier New', monospace; font-size: .7rem; color: #94a3b8; overflow-x: auto; max-height: 200px; overflow-y: auto; }
+  .schema-key { color: #7dd3fc; }
+  .schema-val { color: #86efac; }
+  .schema-str { color: #fca5a5; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 0; border-bottom: 2px solid var(--gray-200); margin-bottom: 1rem; }
+  .tab { padding: .65rem 1.25rem; font-size: .82rem; font-weight: 600; color: var(--gray-400); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .15s; white-space: nowrap; }
+  .tab.active { color: var(--brand); border-bottom-color: var(--brand); }
+  .tab:hover:not(.active) { color: var(--gray-600); }
+
+  /* Progress */
+  .progress-bar { height: 6px; background: var(--gray-100); border-radius: 999px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--brand), var(--accent)); transition: width .6s ease; }
+
+  /* Notification */
+  .notif { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--gray-900); color: white; padding: .75rem 1.25rem; border-radius: 10px; font-size: .82rem; font-weight: 500; z-index: 9999; display: flex; align-items: center; gap: .6rem; box-shadow: var(--shadow-lg); transform: translateY(100px); transition: transform .3s ease; }
+  .notif.show { transform: translateY(0); }
+  .notif-icon { font-size: 1rem; }
+
+  /* Keyword ideas */
+  .kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; }
+  .kw-item { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 6px; padding: .4rem .6rem; font-size: .72rem; color: var(--gray-700); display: flex; justify-content: space-between; align-items: center; }
+  .kw-vol { font-size: .65rem; color: var(--gray-400); font-weight: 600; }
+
+  /* Export section */
+  .export-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+  .export-card { border: 1px solid var(--gray-200); border-radius: 10px; padding: 1rem; text-align: center; cursor: pointer; transition: all .2s; background: white; }
+  .export-card:hover { border-color: var(--brand); background: var(--brand-light); }
+  .export-icon { font-size: 1.5rem; margin-bottom: .4rem; }
+  .export-name { font-size: .78rem; font-weight: 600; color: var(--gray-700); }
+  .export-desc { font-size: .67rem; color: var(--gray-400); margin-top: .2rem; }
+
+  /* Loading spinner */
+  .spinner { width: 20px; height: 20px; border: 2px solid rgba(255,255,255,.3); border-top-color: white; border-radius: 50%; animation: spin .6s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .section-title { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gray-400); margin-bottom: .75rem; }
+
+  /* GEO panel */
+  .geo-item { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; padding: .7rem .9rem; margin-bottom: .5rem; }
+  .geo-item-title { font-size: .78rem; font-weight: 600; color: var(--gray-700); margin-bottom: .2rem; display: flex; align-items: center; gap: .4rem; }
+  .geo-item-desc { font-size: .72rem; color: var(--gray-400); line-height: 1.4; }
+  .geo-check { color: var(--success); font-size: .9rem; }
+
+  .divider { height: 1px; background: var(--gray-100); margin: .75rem 0; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🌐</div>
+      Content Hub Generator
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-seo">SEO Optimized</span>
+      <span class="badge badge-geo">GEO Ready</span>
+    </div>
+  </div>
+</header>
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <!-- Topic Input -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#eef2ff">🎯</div>
+        <h3>Topic Configuration</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>Brand / Site Name</label>
+          <input type="text" id="brandName" placeholder="e.g. AcmeSoft, HealthyLiving" />
+        </div>
+        <div class="form-group">
+          <label>Pillar Topic (Main Theme)</label>
+          <input type="text" id="pillarTopic" placeholder="e.g. Project Management Software" />
+        </div>
+        <div class="form-group">
+          <label>Target Audience</label>
+          <input type="text" id="audience" placeholder="e.g. Small business owners, HR teams" />
+        </div>
+        <div class="form-group">
+          <label>Cluster Topics (Supporting Articles)</label>
+          <div class="topic-input-wrap">
+            <input type="text" id="clusterInput" placeholder="Add a cluster topic..." />
+            <button class="btn-add" onclick="addCluster()">+ Add</button>
+          </div>
+          <div class="pills" id="clusterPills"></div>
+        </div>
+        <div class="form-group">
+          <label>FAQ Topics (Q&A Pages)</label>
+          <div class="topic-input-wrap">
+            <input type="text" id="faqInput" placeholder="Add an FAQ topic..." />
+            <button class="btn-add" onclick="addFaq()">+ Add</button>
+          </div>
+          <div class="pills" id="faqPills"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Settings -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#dcfce7">🔍</div>
+        <h3>SEO & GEO Settings</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>Primary Keyword</label>
+          <input type="text" id="primaryKw" placeholder="e.g. best project management software" />
+        </div>
+        <div class="form-group">
+          <label>Include Schema Markup</label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" id="schemaArticle" checked><span>Article Schema <small>For all blog/article pages</small></span></label>
+            <label class="check-item"><input type="checkbox" id="schemaFaq" checked><span>FAQ Schema <small>For rich snippet eligibility</small></span></label>
+            <label class="check-item"><input type="checkbox" id="schemaBreadcrumb" checked><span>BreadcrumbList Schema <small>Shows site hierarchy in SERPs</small></span></label>
+            <label class="check-item"><input type="checkbox" id="schemaHowTo"><span>HowTo Schema <small>Step-by-step guides</small></span></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>GEO Optimizations</label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" id="geoAnswers" checked><span>Answer-first blocks <small>Direct answers for AI citation</small></span></label>
+            <label class="check-item"><input type="checkbox" id="geoDefinitions" checked><span>Definition sections <small>Optimized for AI summaries</small></span></label>
+            <label class="check-item"><input type="checkbox" id="geoComparisons"><span>Comparison tables <small>Structured data for AI answers</small></span></label>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="generateBtn" onclick="generateHub()">
+          <span id="btnIcon">⚡</span>
+          <span id="btnText">Generate Content Hub</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SEO Score -->
+    <div class="card" id="seoScoreCard" style="display:none">
+      <div class="card-header">
+        <div class="card-icon" style="background:#dcfce7">📊</div>
+        <h3>SEO Readiness Score</h3>
+      </div>
+      <div class="card-body">
+        <div class="seo-score-ring">
+          <div class="ring-wrap">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+              <circle id="scoreArc" cx="50" cy="50" r="40" fill="none" stroke="#10b981" stroke-width="8"
+                stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"/>
+            </svg>
+            <span class="ring-num" id="scoreNum">0</span>
+            <span class="ring-label">/ 100</span>
+          </div>
+        </div>
+        <div class="score-items" id="scoreItems"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="statsBar" style="display:none">
+      <div class="stat-card"><div class="stat-num c1" id="statPages">0</div><div class="stat-label">Pages Generated</div></div>
+      <div class="stat-card"><div class="stat-num c2" id="statClusters">0</div><div class="stat-label">Cluster Articles</div></div>
+      <div class="stat-card"><div class="stat-num c3" id="statFaqs">0</div><div class="stat-label">FAQ Sections</div></div>
+      <div class="stat-card"><div class="stat-num c4" id="statSchemas">0</div><div class="stat-label">Schema Types</div></div>
+    </div>
+
+    <!-- Hub Visualizer -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#eef2ff">🗂️</div>
+        <h3>Topic Cluster Architecture</h3>
+      </div>
+      <div class="hub-visual" id="hubVisual">
+        <div class="hub-empty">
+          <div class="empty-icon">🌐</div>
+          <p>Fill in your topic configuration and click <strong>Generate Content Hub</strong> to visualize your cluster architecture.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pages Panel -->
+    <div class="card" id="pagesPanel" style="display:none">
+      <div class="card-header">
+        <div class="card-icon" style="background:#dcfce7">📄</div>
+        <h3>Generated Pages</h3>
+      </div>
+      <div class="card-body">
+        <div class="tabs" id="pageTabs">
+          <div class="tab active" onclick="showTab('all')">All Pages</div>
+          <div class="tab" onclick="showTab('pillar')">Pillar</div>
+          <div class="tab" onclick="showTab('cluster')">Clusters</div>
+          <div class="tab" onclick="showTab('faq')">FAQs</div>
+        </div>
+        <div class="pages-grid" id="pagesGrid"></div>
+      </div>
+    </div>
+
+    <!-- GEO Panel -->
+    <div class="card" id="geoPanel" style="display:none">
+      <div class="card-header">
+        <div class="card-icon" style="background:var(--accent-light)">🤖</div>
+        <h3>GEO Optimization Strategy</h3>
+      </div>
+      <div class="card-body">
+        <p style="font-size:.78rem;color:var(--gray-500);margin-bottom:1rem">These optimizations make your content citeable by AI search engines (ChatGPT, Perplexity, Gemini, etc.)</p>
+        <div id="geoItems"></div>
+      </div>
+    </div>
+
+    <!-- Schema Preview -->
+    <div class="card" id="schemaPanel" style="display:none">
+      <div class="card-header">
+        <div class="card-icon" style="background:#fef9c3">🏷️</div>
+        <h3>Schema Markup Preview</h3>
+      </div>
+      <div class="card-body">
+        <div class="tabs">
+          <div class="tab active" onclick="showSchema('article')">Article</div>
+          <div class="tab" onclick="showSchema('faq')">FAQ</div>
+          <div class="tab" onclick="showSchema('breadcrumb')">Breadcrumb</div>
+        </div>
+        <div class="schema-preview" id="schemaCode"></div>
+      </div>
+    </div>
+
+    <!-- Export -->
+    <div class="card" id="exportPanel" style="display:none">
+      <div class="card-header">
+        <div class="card-icon" style="background:#fef3c7">📦</div>
+        <h3>Export & Deploy</h3>
+      </div>
+      <div class="card-body">
+        <div class="export-grid">
+          <div class="export-card" onclick="exportHub('full')">
+            <div class="export-icon">🏗️</div>
+            <div class="export-name">Full Hub Package</div>
+            <div class="export-desc">All HTML pages + CSS + internal linking</div>
+          </div>
+          <div class="export-card" onclick="exportHub('pillar')">
+            <div class="export-icon">📌</div>
+            <div class="export-name">Pillar Page Only</div>
+            <div class="export-desc">Main pillar page with full schema</div>
+          </div>
+          <div class="export-card" onclick="exportHub('schema')">
+            <div class="export-icon">🏷️</div>
+            <div class="export-name">Schema JSON-LD</div>
+            <div class="export-desc">All structured data scripts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Notification -->
+<div class="notif" id="notif">
+  <span class="notif-icon">✅</span>
+  <span id="notifText">Hub generated successfully!</span>
+</div>
+
+<script>
+// State
+let state = {
+  clusters: [],
+  faqs: [],
+  generated: false,
+  brand: '',
+  pillar: '',
+  audience: '',
+  primaryKw: '',
+  allPages: []
+};
+
+// ─── Pill management ──────────────────────────────────────
+function addCluster() {
+  const inp = document.getElementById('clusterInput');
+  const val = inp.value.trim();
+  if (!val) return;
+  state.clusters.push(val);
+  inp.value = '';
+  renderPills('clusterPills', state.clusters, 'clusters');
+}
+
+function addFaq() {
+  const inp = document.getElementById('faqInput');
+  const val = inp.value.trim();
+  if (!val) return;
+  state.faqs.push(val);
+  inp.value = '';
+  renderPills('faqPills', state.faqs, 'faqs');
+}
+
+function renderPills(containerId, arr, stateKey) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = arr.map((t, i) => `
+    <span class="pill ${stateKey === 'clusters' ? '' : 'pill-pillar'}">
+      ${stateKey === 'clusters' ? '📄' : '❓'} ${t}
+      <span class="pill-remove" onclick="removePill('${stateKey}',${i})">×</span>
+    </span>`).join('');
+}
+
+function removePill(stateKey, idx) {
+  state[stateKey].splice(idx, 1);
+  if (stateKey === 'clusters') renderPills('clusterPills', state.clusters, 'clusters');
+  else renderPills('faqPills', state.faqs, 'faqs');
+}
+
+// Enter key support
+document.getElementById('clusterInput').addEventListener('keypress', e => { if (e.key === 'Enter') addCluster(); });
+document.getElementById('faqInput').addEventListener('keypress', e => { if (e.key === 'Enter') addFaq(); });
+
+// ─── Generate Hub ─────────────────────────────────────────
+function generateHub() {
+  const brand = document.getElementById('brandName').value.trim() || 'My Brand';
+  const pillar = document.getElementById('pillarTopic').value.trim();
+  const audience = document.getElementById('audience').value.trim() || 'general readers';
+  const primaryKw = document.getElementById('primaryKw').value.trim() || pillar;
+
+  if (!pillar) { showNotif('⚠️ Please enter a Pillar Topic first!'); return; }
+
+  state.brand = brand;
+  state.pillar = pillar;
+  state.audience = audience;
+  state.primaryKw = primaryKw;
+
+  // Loading state
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  document.getElementById('btnIcon').innerHTML = '<div class="spinner"></div>';
+  document.getElementById('btnText').textContent = 'Generating...';
+
+  setTimeout(() => {
+    buildHub();
+    btn.disabled = false;
+    document.getElementById('btnIcon').textContent = '✅';
+    document.getElementById('btnText').textContent = 'Regenerate Hub';
+    showNotif('✅ Content hub generated! ' + state.allPages.length + ' pages ready.');
+  }, 1200);
+}
+
+function buildHub() {
+  const { brand, pillar, audience, primaryKw, clusters, faqs } = state;
+
+  // Build all pages list
+  const allPages = [
+    { type: 'home', title: `${brand} — ${pillar} Hub`, slug: 'index', desc: 'Hub homepage with navigation to all cluster articles and pillar content.', schemas: ['WebSite', 'BreadcrumbList'] },
+    { type: 'pillar', title: `The Complete Guide to ${pillar}`, slug: 'pillar-' + slugify(pillar), desc: `Comprehensive pillar page covering all aspects of ${pillar} for ${audience}.`, schemas: ['Article', 'BreadcrumbList'] },
+    ...clusters.map((c, i) => ({
+      type: 'cluster', title: `${c}: Everything You Need to Know`, slug: 'article-' + slugify(c), desc: `Deep-dive cluster article on ${c} linking back to the ${pillar} pillar page.`, schemas: ['Article', 'BreadcrumbList']
+    })),
+    ...faqs.map((f, i) => ({
+      type: 'faq', title: `${f} — FAQs & Answers`, slug: 'faq-' + slugify(f), desc: `FAQ page for "${f}" optimized for featured snippets and AI citation.`, schemas: ['FAQPage', 'BreadcrumbList', 'Article']
+    }))
+  ];
+  state.allPages = allPages;
+
+  // Counts
+  const schemaCount = [...new Set(allPages.flatMap(p => p.schemas))].length;
+  document.getElementById('statPages').textContent = allPages.length;
+  document.getElementById('statClusters').textContent = clusters.length;
+  document.getElementById('statFaqs').textContent = faqs.length;
+  document.getElementById('statSchemas').textContent = schemaCount;
+  document.getElementById('statsBar').style.display = 'grid';
+
+  renderArchitecture();
+  renderPages(allPages);
+  renderGeo();
+  renderSchema('article');
+  renderSeoScore();
+
+  ['pagesPanel','geoPanel','schemaPanel','exportPanel','seoScoreCard'].forEach(id => {
+    document.getElementById(id).style.display = 'block';
+  });
+
+  state.generated = true;
+}
+
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+// ─── Architecture Visualizer ──────────────────────────────
+function renderArchitecture() {
+  const { pillar, clusters, faqs, primaryKw, audience } = state;
+  const maxClusters = clusters.length + faqs.length;
+
+  let clusterHTML = '';
+  clusters.forEach(c => {
+    clusterHTML += `
+      <div class="cluster-node">
+        <div class="cluster-type type-article">📄 Cluster Article</div>
+        <div class="cluster-title">${c}</div>
+        <div class="cluster-kw">→ Links to pillar page</div>
+      </div>`;
+  });
+  faqs.forEach(f => {
+    clusterHTML += `
+      <div class="cluster-node faq-node">
+        <div class="cluster-type type-faq">❓ FAQ Page</div>
+        <div class="cluster-title">${f}</div>
+        <div class="cluster-kw">FAQ + Article Schema</div>
+      </div>`;
+  });
+
+  if (!clusterHTML) {
+    clusterHTML = `
+      <div class="cluster-node"><div class="cluster-type type-article">📄 Cluster</div><div class="cluster-title">Add cluster topics to generate articles</div></div>
+      <div class="cluster-node faq-node"><div class="cluster-type type-faq">❓ FAQ</div><div class="cluster-title">Add FAQ topics to generate Q&amp;A pages</div></div>`;
+  }
+
+  document.getElementById('hubVisual').innerHTML = `
+    <div class="cluster-viz">
+      <div class="pillar-node">
+        <div class="pillar-label">🏛️ Pillar Page</div>
+        <div class="pillar-title">${pillar}</div>
+        <div class="pillar-meta">
+          <span class="meta-tag">Article Schema</span>
+          <span class="meta-tag">Breadcrumb</span>
+          <span class="meta-tag">Internal Links</span>
+        </div>
+      </div>
+      <div class="cluster-row">${clusterHTML}</div>
+    </div>`;
+}
+
+// ─── Pages Grid ───────────────────────────────────────────
+let activeTab = 'all';
+function showTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.tabs .tab').forEach((t, i) => {
+    t.classList.toggle('active', ['all','pillar','cluster','faq'][i] === tab);
+  });
+  const filtered = tab === 'all' ? state.allPages : state.allPages.filter(p => p.type === tab || (tab === 'cluster' && p.type === 'home'));
+  renderPages(tab === 'all' ? state.allPages : state.allPages.filter(p => tab === 'pillar' ? p.type === 'pillar' : tab === 'cluster' ? p.type === 'cluster' : p.type === 'faq'));
+}
+
+const typeConfig = {
+  home:    { icon: '🏠', iconClass: 'icon-home',    tag: 'tag-cluster', label: 'Homepage' },
+  pillar:  { icon: '🏛️', iconClass: 'icon-pillar',  tag: 'tag-pillar',  label: 'Pillar Page' },
+  cluster: { icon: '📄', iconClass: 'icon-cluster', tag: 'tag-cluster', label: 'Cluster Article' },
+  faq:     { icon: '❓', iconClass: 'icon-faq',     tag: 'tag-faq',     label: 'FAQ Page' }
+};
+
+function renderPages(pages) {
+  const grid = document.getElementById('pagesGrid');
+  grid.innerHTML = pages.map(p => {
+    const cfg = typeConfig[p.type];
+    const schemaTags = p.schemas.map(s => `<span class="tag tag-schema">${s}</span>`).join('');
+    return `
+      <div class="page-card">
+        <div class="page-card-head">
+          <div class="page-type-icon ${cfg.iconClass}">${cfg.icon}</div>
+          <h4>${p.title}</h4>
+        </div>
+        <div class="page-card-body">
+          <div class="page-meta">
+            <span class="tag ${cfg.tag}">${cfg.label}</span>
+            ${schemaTags}
+          </div>
+          <div class="page-desc">${p.desc}</div>
+        </div>
+        <div class="page-actions">
+          <button class="btn-generate" onclick="downloadPage('${p.slug}','${p.type}','${p.title.replace(/'/g,"\\'")}')">⬇ Download HTML</button>
+          <button class="btn-generate btn-teal" onclick="previewSchema('${p.type}')">🏷 Schema</button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ─── GEO Panel ────────────────────────────────────────────
+function renderGeo() {
+  const items = [
+    { icon: '💡', title: 'Answer-First Blocks', desc: `Each page opens with a concise, direct answer paragraph — the format AI engines like Perplexity and ChatGPT prefer to cite.`, enabled: document.getElementById('geoAnswers').checked },
+    { icon: '📖', title: 'Definition Sections', desc: `Clear "What is ${state.pillar}?" sections with structured definitions that AI assistants can summarize and cite.`, enabled: document.getElementById('geoDefinitions').checked },
+    { icon: '❓', title: 'FAQ Schema Blocks', desc: `Structured Q&A pairs in FAQ pages that are natively parseable by AI models for direct answer generation.`, enabled: true },
+    { icon: '🔗', title: 'Internal Topic Linking', desc: `Every cluster article links back to the pillar page, creating topical authority signals for both traditional and AI search.`, enabled: true },
+    { icon: '📊', title: 'Comparison Tables', desc: `Structured HTML tables in comparison articles — easily parsed by AI for feature comparisons.`, enabled: document.getElementById('geoComparisons').checked },
+    { icon: '🏷️', title: 'Rich Structured Data', desc: `JSON-LD schema markup signals content type and relationships to search engine crawlers and AI training pipelines.`, enabled: true },
+  ];
+  document.getElementById('geoItems').innerHTML = items.map(item => `
+    <div class="geo-item">
+      <div class="geo-item-title">
+        ${item.icon} ${item.title}
+        ${item.enabled ? '<span class="geo-check">✓ Enabled</span>' : '<span style="color:var(--gray-400);font-size:.7rem">⚪ Disabled</span>'}
+      </div>
+      <div class="geo-item-desc">${item.desc}</div>
+    </div>`).join('');
+}
+
+// ─── SEO Score ────────────────────────────────────────────
+function renderSeoScore() {
+  const checks = [
+    { label: 'Pillar page configured', dot: 'dot-green', val: '✓', pass: !!state.pillar },
+    { label: 'Cluster articles added', dot: state.clusters.length > 0 ? 'dot-green' : 'dot-yellow', val: state.clusters.length, pass: state.clusters.length > 0 },
+    { label: 'FAQ pages added', dot: state.faqs.length > 0 ? 'dot-green' : 'dot-yellow', val: state.faqs.length, pass: state.faqs.length > 0 },
+    { label: 'Article Schema', dot: 'dot-green', val: '✓', pass: true },
+    { label: 'FAQ Schema', dot: 'dot-green', val: '✓', pass: true },
+    { label: 'Breadcrumb Schema', dot: 'dot-green', val: '✓', pass: true },
+    { label: 'Internal linking', dot: 'dot-blue', val: '✓', pass: true },
+    { label: 'GEO answer blocks', dot: document.getElementById('geoAnswers').checked ? 'dot-green' : 'dot-yellow', val: document.getElementById('geoAnswers').checked ? '✓' : '—', pass: document.getElementById('geoAnswers').checked },
+  ];
+  const passed = checks.filter(c => c.pass).length;
+  const score = Math.round((passed / checks.length) * 100);
+
+  document.getElementById('scoreNum').textContent = score;
+  const circumference = 251.2;
+  const offset = circumference - (score / 100) * circumference;
+  document.getElementById('scoreArc').setAttribute('stroke-dashoffset', offset);
+  document.getElementById('scoreArc').setAttribute('stroke', score > 79 ? '#10b981' : score > 59 ? '#f59e0b' : '#ef4444');
+
+  document.getElementById('scoreItems').innerHTML = checks.map(c => `
+    <div class="score-item">
+      <span class="score-item-label"><span class="${c.dot}"></span> ${c.label}</span>
+      <span class="score-item-val" style="color:${c.pass ? 'var(--success)' : 'var(--warn)'}">${c.val}</span>
+    </div>`).join('');
+}
+
+// ─── Schema Preview ───────────────────────────────────────
+function showSchema(type) {
+  document.querySelectorAll('#schemaPanel .tab').forEach((t, i) => {
+    t.classList.toggle('active', ['article','faq','breadcrumb'][i] === type);
+  });
+  renderSchema(type);
+}
+
+function previewSchema(type) {
+  const map = { pillar: 'article', cluster: 'article', faq: 'faq', home: 'breadcrumb' };
+  showSchema(map[type] || 'article');
+  document.getElementById('schemaPanel').scrollIntoView({ behavior: 'smooth' });
+}
+
+function renderSchema(type) {
+  const { brand, pillar, primaryKw } = state;
+  let schema = {};
+
+  if (type === 'article') {
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": `The Complete Guide to ${pillar}`,
+      "description": `Comprehensive guide covering all aspects of ${pillar}. Written for ${state.audience}.`,
+      "keywords": primaryKw,
+      "author": { "@type": "Organization", "name": brand },
+      "publisher": { "@type": "Organization", "name": brand, "logo": { "@type": "ImageObject", "url": `https://example.com/logo.png` } },
+      "datePublished": new Date().toISOString().split('T')[0],
+      "mainEntityOfPage": { "@type": "WebPage", "@id": `https://example.com/${slugify(pillar)}` }
+    };
+  } else if (type === 'faq') {
+    const questions = state.faqs.length > 0 ? state.faqs : [`What is ${pillar}?`, `How does ${pillar} work?`, `Why use ${pillar}?`];
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": questions.slice(0, 3).map(q => ({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": { "@type": "Answer", "text": `This is the SEO-optimized answer to "${q}" — written to be cited by AI search engines and appear in featured snippets.` }
+      }))
+    };
+  } else {
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://example.com" },
+        { "@type": "ListItem", "position": 2, "name": pillar, "item": `https://example.com/${slugify(pillar)}` },
+        { "@type": "ListItem", "position": 3, "name": `Complete Guide to ${pillar}`, "item": `https://example.com/${slugify(pillar)}/guide` }
+      ]
+    };
+  }
+
+  const json = JSON.stringify(schema, null, 2);
+  document.getElementById('schemaCode').innerHTML = syntaxHighlight(json);
+}
+
+function syntaxHighlight(json) {
+  return json
+    .replace(/("[\w@]+")\s*:/g, '<span class="schema-key">$1</span>:')
+    .replace(/:\s*(".*?")/g, ': <span class="schema-str">$1</span>')
+    .replace(/:\s*(true|false|null)/g, ': <span class="schema-val">$1</span>')
+    .replace(/:\s*(\d+)/g, ': <span class="schema-val">$1</span>');
+}
+
+// ─── Download Page ────────────────────────────────────────
+function downloadPage(slug, type, title) {
+  const html = generatePageHTML(slug, type, title);
+  const blob = new Blob([html], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = slug + '.html';
+  a.click();
+  showNotif('⬇️ Downloaded ' + slug + '.html');
+}
+
+function generatePageHTML(slug, type, title) {
+  const { brand, pillar, primaryKw, audience, clusters, faqs } = state;
+  const isArticle = document.getElementById('schemaArticle').checked;
+  const isFaq = document.getElementById('schemaFaq').checked;
+  const isBreadcrumb = document.getElementById('schemaBreadcrumb').checked;
+  const answerFirst = document.getElementById('geoAnswers').checked;
+  const withDefs = document.getElementById('geoDefinitions').checked;
+
+  const articleSchema = isArticle ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "${type === 'faq' ? 'FAQPage' : 'Article'}",
+    "headline": "${title.replace(/"/g, '\\"')}",
+    "description": "Comprehensive ${type} page about ${pillar}",
+    "author": {"@type": "Organization", "name": "${brand}"},
+    "publisher": {"@type": "Organization", "name": "${brand}"},
+    "datePublished": "${new Date().toISOString().split('T')[0]}"
+  }
+  <\/script>` : '';
+
+  const breadcrumbSchema = isBreadcrumb ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://example.com"},
+      {"@type": "ListItem", "position": 2, "name": "${pillar}", "item": "https://example.com/${slugify(pillar)}"},
+      {"@type": "ListItem", "position": 3, "name": "${title.replace(/"/g, '\\"')}", "item": "https://example.com/${slug}"}
+    ]
+  }
+  <\/script>` : '';
+
+  const faqQuestions = type === 'faq' ? faqs.slice(0, 5).map(f => `
+      <div class="faq-item">
+        <h3 class="faq-q">Q: ${f}</h3>
+        <div class="faq-a">
+          <p>This is the structured answer to "${f}" — optimized for featured snippets and AI citation. Write a direct, factual 2-3 sentence answer here that addresses the question completely.</p>
+        </div>
+      </div>`).join('') : '';
+
+  const clusterLinks = clusters.map(c => `<a href="article-${slugify(c)}.html" class="cluster-link">📄 ${c}</a>`).join('');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${title} | ${brand}</title>
+<meta name="description" content="${type === 'pillar' ? `The complete guide to ${pillar} — everything ${audience} need to know.` : `Learn about ${title} — expert insights for ${audience}.`}">
+<meta name="keywords" content="${primaryKw}, ${pillar}, ${brand}">
+<meta property="og:title" content="${title}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="${brand}">
+${articleSchema}
+${breadcrumbSchema}
+<style>
+  :root { --brand: #4f46e5; --accent: #06b6d4; --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-600: #4b5563; --gray-800: #1f2937; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--gray-50); color: var(--gray-800); line-height: 1.6; }
+  .site-header { background: linear-gradient(135deg, #1e1b4b, #4f46e5); color: white; padding: 1rem 2rem; }
+  .site-header a { color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+  nav { background: white; border-bottom: 1px solid #e5e7eb; padding: .6rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  nav a { color: var(--brand); text-decoration: none; font-size: .85rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .breadcrumb { padding: .75rem 2rem; background: white; border-bottom: 1px solid #f3f4f6; font-size: .78rem; color: #9ca3af; }
+  .breadcrumb a { color: var(--brand); text-decoration: none; }
+  main { max-width: 860px; margin: 2rem auto; padding: 0 1.5rem; }
+  .hero { background: linear-gradient(135deg, #eef2ff, #ecfeff); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; border-left: 4px solid var(--brand); }
+  .hero .page-type { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--brand); font-weight: 700; margin-bottom: .5rem; }
+  h1 { font-size: 2rem; font-weight: 800; line-height: 1.2; color: #111827; margin-bottom: 1rem; }
+  .answer-first { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; }
+  .answer-first strong { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: #166534; margin-bottom: .5rem; }
+  .answer-first p { font-size: .95rem; color: #14532d; }
+  h2 { font-size: 1.4rem; font-weight: 700; color: #111827; margin: 2rem 0 .75rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; }
+  p { margin-bottom: 1rem; color: #374151; font-size: .95rem; }
+  .definition-box { background: white; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .definition-box h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); margin-bottom: .5rem; }
+  .faq-item { background: white; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .faq-q { font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: .75rem; }
+  .faq-a p { color: #374151; font-size: .9rem; margin: 0; }
+  .cluster-links { background: #eef2ff; border-radius: 10px; padding: 1.25rem; margin: 2rem 0; }
+  .cluster-links h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); margin-bottom: .75rem; }
+  .cluster-link { display: inline-block; background: white; border: 1px solid #c7d2fe; color: var(--brand); text-decoration: none; padding: .4rem .9rem; border-radius: 6px; font-size: .82rem; font-weight: 500; margin: .25rem; transition: background .15s; }
+  .cluster-link:hover { background: var(--brand); color: white; }
+  .pillar-cta { background: linear-gradient(135deg, var(--brand), #6366f1); color: white; border-radius: 10px; padding: 1.5rem; text-align: center; margin: 2rem 0; }
+  .pillar-cta h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+  .pillar-cta p { font-size: .85rem; opacity: .9; margin-bottom: 1rem; }
+  .pillar-cta a { background: white; color: var(--brand); text-decoration: none; padding: .6rem 1.5rem; border-radius: 6px; font-weight: 700; font-size: .875rem; }
+  footer { background: #111827; color: #9ca3af; text-align: center; padding: 2rem; margin-top: 3rem; font-size: .8rem; }
+  footer a { color: #6366f1; text-decoration: none; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html">${brand}</a>
+</header>
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="pillar-${slugify(pillar)}.html">🏛️ ${pillar} Guide</a>
+  ${clusters.slice(0,4).map(c => `<a href="article-${slugify(c)}.html">📄 ${c}</a>`).join('')}
+  ${faqs.length > 0 ? `<a href="faq-${slugify(faqs[0])}.html">❓ FAQs</a>` : ''}
+</nav>
+<div class="breadcrumb">
+  <a href="index.html">Home</a> → <a href="pillar-${slugify(pillar)}.html">${pillar}</a> → ${title}
+</div>
+<main>
+  <div class="hero">
+    <div class="page-type">${type === 'pillar' ? '🏛️ Pillar Page' : type === 'faq' ? '❓ FAQ Page' : type === 'home' ? '🏠 Hub Home' : '📄 Cluster Article'}</div>
+    <h1>${title}</h1>
+    <p style="color:#6b7280;font-size:.9rem;margin:0">For ${audience} · ${brand} · ${new Date().toLocaleDateString('en-US', {year:'numeric',month:'long'})}</p>
+  </div>
+
+  ${answerFirst ? `
+  <div class="answer-first">
+    <strong>📌 Quick Answer</strong>
+    <p>This page covers everything you need to know about ${type === 'faq' ? 'these frequently asked questions' : title.toLowerCase()}. ${pillar} refers to [your concise definition here] — and this guide provides a complete, structured overview for ${audience}.</p>
+  </div>` : ''}
+
+  ${withDefs && type !== 'faq' ? `
+  <div class="definition-box">
+    <h3>📖 Definition</h3>
+    <p><strong>${pillar}</strong> is [define your topic here in 1-2 clear sentences]. This definition is written to be cited by AI search engines and appear in featured snippets on Google and Bing.</p>
+  </div>` : ''}
+
+  ${type === 'pillar' ? `
+  <h2>What is ${pillar}?</h2>
+  <p>This is your comprehensive pillar page introduction. Write 200-300 words here explaining ${pillar} at a high level. This page serves as the "hub" that all cluster articles link back to.</p>
+  <h2>Why ${pillar} Matters</h2>
+  <p>Explain the importance and relevance of this topic for your audience: ${audience}. Include statistics, trends, and key reasons why readers should care.</p>
+  <h2>Key Topics in ${pillar}</h2>
+  <p>This pillar page covers all the major subtopics. Each section links to a dedicated cluster article for deeper exploration.</p>
+  ${clusters.map(c => `
+  <h2>${c}</h2>
+  <p>Brief overview of ${c} and how it relates to ${pillar}. For a complete deep-dive, see our dedicated <a href="article-${slugify(c)}.html" style="color:var(--brand)">${c} guide →</a></p>`).join('')}
+  ` : type === 'faq' ? `
+  <h2>Frequently Asked Questions</h2>
+  <p>Below are the most common questions about this topic, with direct answers optimized for featured snippets and AI search citation.</p>
+  ${faqQuestions}
+  ` : `
+  <h2>Introduction to ${title.replace(/: Everything.*$/,'')}</h2>
+  <p>This cluster article provides an in-depth look at ${title.replace(/: Everything.*$/,'').toLowerCase()} — a key subtopic within the broader ${pillar} ecosystem. Understanding this topic is essential for ${audience}.</p>
+  <h2>Key Concepts</h2>
+  <p>Write your main content sections here. Each H2 is an opportunity for a featured snippet. Keep answers concise (40-60 words) and factual.</p>
+  <h2>Best Practices</h2>
+  <p>Cover the best practices related to this topic. Structured, numbered lists work well for "how to" featured snippets and AI citations.</p>
+  <h2>Common Mistakes to Avoid</h2>
+  <p>Address common mistakes and misconceptions. FAQ-style questions throughout the article improve chances of AI engine citation.</p>
+  `}
+
+  <div class="cluster-links">
+    <h3>📚 Explore Related Topics</h3>
+    ${clusterLinks || `<a href="pillar-${slugify(pillar)}.html" class="cluster-link">🏛️ Complete ${pillar} Guide</a>`}
+  </div>
+
+  <div class="pillar-cta">
+    <h3>Want the Full Picture?</h3>
+    <p>Read our comprehensive ${pillar} guide — covering all the topics in one place.</p>
+    <a href="pillar-${slugify(pillar)}.html">Read the Complete Guide →</a>
+  </div>
+</main>
+<footer>
+  <p>© ${new Date().getFullYear()} ${brand} · Built with Content Hub Generator · <a href="index.html">Back to Hub</a></p>
+</footer>
+</body>
+</html>`;
+}
+
+function exportHub(type) {
+  showNotif('📦 Preparing export... downloading files individually.');
+  if (type === 'full') {
+    state.allPages.forEach((p, i) => {
+      setTimeout(() => downloadPage(p.slug, p.type, p.title), i * 300);
+    });
+  } else if (type === 'pillar') {
+    const p = state.allPages.find(p => p.type === 'pillar');
+    if (p) downloadPage(p.slug, p.type, p.title);
+  } else if (type === 'schema') {
+    const types = ['article', 'faq', 'breadcrumb'];
+    const schemas = {};
+    types.forEach(t => {
+      // Build schema objects
+    });
+    showNotif('🏷️ Schema JSON-LD — see Schema Preview section above for code.');
+  }
+}
+
+function showNotif(msg) {
+  const n = document.getElementById('notif');
+  document.getElementById('notifText').textContent = msg;
+  n.classList.add('show');
+  setTimeout(() => n.classList.remove('show'), 3500);
+}
+
+// Pre-populate demo data
+window.onload = () => {
+  document.getElementById('brandName').value = 'ContentPro';
+  document.getElementById('pillarTopic').value = 'Content Marketing Strategy';
+  document.getElementById('audience').value = 'Marketing managers & content teams';
+  document.getElementById('primaryKw').value = 'content marketing strategy guide';
+};
+</script>
+</body>
+</html>
